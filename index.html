@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6c63d9">
+<title>تعلّم بسهولة</title>
+<style>
+:root{--purple:#6c63d9;--ink:#26304a;--muted:#727b91;--bg:#f7f8ff;--white:#fff;--mint:#dff7ed;--yellow:#fff1bf;--pink:#ffe4ec;--blue:#e2edff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Arial",sans-serif}
+header{background:linear-gradient(135deg,#766be6,#8b80f1);color:white;padding:24px 18px 30px;border-radius:0 0 28px 28px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{background:#ffffff2b;padding:8px 12px;border-radius:20px;font-size:12px}
+h1{font-size:25px;margin:24px 0 8px;line-height:1.5}header p{margin:0;line-height:1.8;color:#f0efff}
+.wrap{max-width:850px;margin:auto;padding:18px}.section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px}.section-title h2{font-size:19px;margin:0}.section-title small{color:var(--muted)}
+.progress{background:white;padding:15px;border-radius:18px;box-shadow:0 4px 16px #28285b0a;display:flex;align-items:center;gap:13px;margin-top:-2px}.avatar{width:54px;height:54px;border-radius:17px;background:var(--yellow);display:grid;place-items:center;font-size:28px}.progress strong{display:block;margin-bottom:6px}.bar{height:8px;background:#ecebfa;border-radius:10px;overflow:hidden;width:100%;margin-top:8px}.bar span{display:block;width:28%;height:100%;background:var(--purple);border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:white;border-radius:20px;padding:16px;text-align:right;border:0;box-shadow:0 4px 16px #28285b08;cursor:pointer;min-height:128px;color:var(--ink);font:inherit}.icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:25px;margin-bottom:12px}.card b{font-size:16px;display:block}.card small{display:block;color:var(--muted);margin-top:6px;line-height:1.6}.mint{background:var(--mint)}.yellow{background:var(--yellow)}.pink{background:var(--pink)}.blue{background:var(--blue)}
+.actions{display:flex;gap:10px;margin:18px 0}.primary,.secondary{border:0;border-radius:14px;padding:13px 16px;font:inherit;font-weight:bold;cursor:pointer}.primary{background:var(--purple);color:white;flex:1}.secondary{background:white;color:var(--purple)}
+.panel{display:none;background:white;border-radius:20px;padding:18px;margin-top:16px;box-shadow:0 4px 16px #28285b0a}.panel.active{display:block}.panel h2{margin-top:0}.lesson-list{display:grid;gap:10px}.lesson{background:#f7f7ff;padding:13px;border-radius:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}.lesson button{background:var(--purple);color:#fff;border:0;border-radius:10px;padding:9px 12px;font:inherit}.bigletter{font-size:78px;text-align:center;color:var(--purple);padding:15px}.trace{width:100%;height:180px;border:2px dashed #c8c4f5;border-radius:16px;touch-action:none;background:#fffdf8}.quizopt{display:block;width:100%;margin:8px 0;padding:12px;border:1px solid #e4e3f6;border-radius:12px;background:white;font:inherit;text-align:right}.quizopt:hover{background:#f0efff}.notice{font-size:12px;color:var(--muted);line-height:1.8;margin-top:20px}footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}header{padding-right:max(24px,calc((100vw - 810px)/2));padding-left:max(24px,calc((100vw - 810px)/2))}}
+</style></head>
+<body>
+<header><div class="top"><div class="brand">🌈 تعلّم بسهولة</div><div class="badge">السنة الأولى ابتدائي</div></div><h1>مرحبًا يا بطل! ⭐<br>هيا نتعلّم شيئًا جديدًا</h1><p>دروس وأنشطة تعليمية بواجهة بسيطة وممتعة.</p></header>
+<main class="wrap">
+<div class="progress"><div class="avatar">🧒</div><div style="flex:1"><strong>رحلتك التعليمية</strong><small style="color:var(--muted)">ابدأ درسًا جديدًا واكتشف التمارين</small><div class="bar"><span></span></div></div></div>
+<div class="section-title"><h2>ماذا تريد أن تتعلّم؟</h2><small>اختر مادة</small></div>
+<div class="grid">
+<button class="card" onclick="openSubject('arabic')"><span class="icon mint">🔤</span><b>اللغة العربية</b><small>الحروف والقراءة والكتابة</small></button>
+<button class="card" onclick="openSubject('math')"><span class="icon yellow">🔢</span><b>الرياضيات</b><small>الأعداد والعدّ والعمليات</small></button>
+<button class="card" onclick="openSubject('science')"><span class="icon blue">🌱</span><b>التربية العلمية</b><small>اكتشف ما حولك</small></button>
+<button class="card" onclick="openSubject('islamic')"><span class="icon pink">🌙</span><b>التربية الإسلامية</b><small>قيم وسلوكيات حسنة</small></button>
+<button class="card" onclick="openSubject('civic')"><span class="icon yellow">🤝</span><b>التربية المدنية</b><small>العيش مع الآخرين</small></button>
+<button class="card" onclick="openSubject('art')"><span class="icon mint">🎨</span><b>التربية الفنية</b><small>أنشطة إبداعية</small></button>
+</div>
+<div class="actions"><button class="primary" onclick="openSubject('arabic')">ابدأ التعلّم ←</button><button class="secondary" onclick="showQuiz()">اختبر نفسك ✨</button></div>
+<section id="panel" class="panel"></section>
+<p class="notice">هذه نسخة تجريبية للواجهة. يمكن إضافة الدروس الرسمية والأنشطة المعتمدة بعد تحديد المنهاج والمواد المطلوبة. بعض الأقسام تحتوي أمثلة توضيحية وليست بديلًا عن الكتاب المدرسي.</p>
+</main><footer>صُنع بحبّ من أجل التعلّم 💜</footer>
+<script>
+const data={
+arabic:{title:"اللغة العربية",intro:"اختر نشاطًا للتدرّب.",lessons:[["التعرّف إلى الحروف","حروف"],["التدريب على الكتابة بالتنقيط","كتابة"],["كلمات قصيرة","قراءة"]]},
+math:{title:"الرياضيات",intro:"أنشطة تمهيدية للأعداد.",lessons:[["التعرّف إلى الأعداد","أعداد"],["العدّ باستخدام الصور","عدّ"],["مقارنة مجموعتين","مقارنة"]]},
+science:{title:"التربية العلمية",intro:"لاحظ واسأل واكتشف.",lessons:[["النباتات من حولنا","نبات"],["أجزاء الجسم","جسم"]]},
+islamic:{title:"التربية الإسلامية",intro:"أنشطة حول القيم والسلوك الحسن.",lessons:[["الصدق والأمانة","قيم"],["النظافة","نظافة"]]},
+civic:{title:"التربية المدنية",intro:"نتعلّم التعاون واحترام الآخرين.",lessons:[["التعاون في القسم","تعاون"],["قواعد السلامة","سلامة"]]},
+art:{title:"التربية الفنية",intro:"أنشطة إبداعية بسيطة.",lessons:[["الألوان والأشكال","ألوان"],["ارسم وتخيّل","رسم"]]}
+};
+function openSubject(key){let d=data[key];let p=document.getElementById('panel');p.className='panel active';p.innerHTML=`<h2>${d.title}</h2><p>${d.intro}</p><div class="lesson-list">${d.lessons.map((l,i)=>`<div class="lesson"><span><b>${l[0]}</b><br><small style="color:#727b91">نشاط ${i+1}</small></span><button onclick="openLesson('${key}',${i})">افتح</button></div>`).join('')}</div><div class="actions"><button class="secondary" onclick="closePanel()">إغلاق</button></div>`;p.scrollIntoView({behavior:'smooth',block:'start'})}
+function openLesson(key,i){let d=data[key],p=document.getElementById('panel');if(key==='arabic'&&i===1){p.innerHTML=`<h2>التدريب على الكتابة</h2><p>تدرّب على رسم الحرف بإصبعك داخل المساحة.</p><div class="bigletter">ا</div><canvas class="trace" id="draw" width="600" height="180"></canvas><div class="actions"><button class="primary" onclick="clearDraw()">مسح اللوحة</button><button class="secondary" onclick="openSubject('arabic')">عودة</button></div><p>هذا مثال أولي للتجربة؛ يمكن إضافة بقية الحروف في النسخة الكاملة.</p>`;setupDraw()}else{p.innerHTML=`<h2>${d.lessons[i][0]}</h2><div style="text-align:center;font-size:56px;padding:24px">${key==='math'?'🔢':key==='science'?'🌱':key==='art'?'🎨':'⭐'}</div><p>أحسنت! هذا مكان النشاط التفاعلي الخاص بدرس «${d.lessons[i][0]}».</p><p>ستضاف هنا الدروس والتمارين المناسبة بعد اعتماد محتواها.</p><button class="primary" onclick="openSubject('${key}')">العودة إلى ${d.title}</button>`}}
+function showQuiz(){let p=document.getElementById('panel');p.className='panel active';p.innerHTML=`<h2>اختبر نفسك ✨</h2><p>أيّ حرف نراه في بداية كلمة «أسد»؟</p><button class="quizopt" onclick="answer(this,false)">ب</button><button class="quizopt" onclick="answer(this,true)">أ</button><button class="quizopt" onclick="answer(this,false)">م</button><p id="feedback" aria-live="polite"></p><button class="secondary" onclick="closePanel()">إغلاق</button>`;p.scrollIntoView({behavior:'smooth'})}
+function answer(el,ok){document.getElementById('feedback').textContent=ok?'أحسنت! إجابة صحيحة ⭐':'حاول مرة أخرى، فكّر في أول حرف من كلمة أسد.'}
+function closePanel(){let p=document.getElementById('panel');p.className='panel';p.innerHTML=''}
+function setupDraw(){let c=document.getElementById('draw'),ctx=c.getContext('2d'),drawing=false;ctx.lineWidth=5;ctx.lineCap='round';ctx.strokeStyle='#6c63d9';function pos(e){let r=c.getBoundingClientRect();return {x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}}c.onpointerdown=e=>{drawing=true;c.setPointerCapture(e.pointerId);let q=pos(e);ctx.beginPath();ctx.moveTo(q.x,q.y)};c.onpointermove=e=>{if(!drawing)return;let q=pos(e);ctx.lineTo(q.x,q.y);ctx.stroke()};c.onpointerup=c.onpointercancel=()=>drawing=false}
+function clearDraw(){let c=document.getElementById('draw');if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)}
+</script></body></html>
