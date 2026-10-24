@@ -1,95 +1,788 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#6c63d9">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5b52cc">
+<meta name="description" content="تعلّم بسهولة: تطبيق تعليمي تفاعلي لتلاميذ السنة الأولى ابتدائي في اللغة العربية والرياضيات والتربية العلمية والإسلامية والمدنية والفنية والفرنسية.">
 <title>تعلّم بسهولة</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
 <style>
-:root{--purple:#6c63d9;--ink:#26304a;--muted:#727b91;--bg:#f7f8ff;--mint:#dff7ed;--yellow:#fff1bf;--pink:#ffe4ec;--blue:#e2edff;--green:#198754;--red:#c43d54}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
-header{background:linear-gradient(135deg,#766be6,#8b80f1);color:white;padding:24px 18px 30px;border-radius:0 0 28px 28px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{background:#ffffff2b;padding:8px 12px;border-radius:20px;font-size:12px}
-h1{font-size:25px;margin:24px 0 8px;line-height:1.5}header p{margin:0;line-height:1.8;color:#f0efff}
-.wrap{max-width:900px;margin:auto;padding:18px}.section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px}.section-title h2{font-size:19px;margin:0}.section-title small{color:var(--muted)}
-.progress{background:white;padding:15px;border-radius:18px;box-shadow:0 4px 16px #28285b0a;display:flex;align-items:center;gap:13px}.avatar{width:54px;height:54px;border-radius:17px;background:var(--yellow);display:grid;place-items:center;font-size:28px}.progress strong{display:block;margin-bottom:6px}.bar{height:8px;background:#ecebfa;border-radius:10px;overflow:hidden;width:100%;margin-top:8px}.bar span{display:block;width:0;height:100%;background:var(--purple);border-radius:10px;transition:width .3s}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:white;border-radius:20px;padding:16px;text-align:right;border:0;box-shadow:0 4px 16px #28285b08;cursor:pointer;min-height:128px;color:var(--ink);font:inherit}.icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:25px;margin-bottom:12px}.card b{font-size:16px;display:block}.card small{display:block;color:var(--muted);margin-top:6px;line-height:1.6}.mint{background:var(--mint)}.yellow{background:var(--yellow)}.pink{background:var(--pink)}.blue{background:var(--blue)}
-.actions{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}.primary,.secondary{border:0;border-radius:14px;padding:13px 16px;font:inherit;font-weight:bold;cursor:pointer}.primary{background:var(--purple);color:white;flex:1}.secondary{background:white;color:var(--purple);border:1px solid #e7e5ff}
-.panel{display:none;background:white;border-radius:20px;padding:18px;margin-top:16px;box-shadow:0 4px 16px #28285b0a}.panel.active{display:block}.panel h2{margin-top:0}.lesson-list{display:grid;gap:10px}.lesson{background:#f7f7ff;padding:13px;border-radius:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}.lesson button{background:var(--purple);color:#fff;border:0;border-radius:10px;padding:9px 12px;font:inherit;cursor:pointer}.bigletter{font-size:78px;text-align:center;color:var(--purple);padding:8px}.trace{width:100%;height:190px;border:2px dashed #c8c4f5;border-radius:16px;touch-action:none;background:#fffdf8}.quizopt{display:block;width:100%;margin:8px 0;padding:12px;border:1px solid #e4e3f6;border-radius:12px;background:white;font:inherit;text-align:right;cursor:pointer}.notice{font-size:12px;color:var(--muted);line-height:1.8;margin-top:20px}.feedback{font-weight:bold;line-height:1.8;min-height:28px}.correct{color:var(--green)}.wrong{color:var(--red)}.letter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.letter-btn{font:inherit;font-size:27px;border:1px solid #e4e3f6;background:#f9f8ff;border-radius:13px;padding:12px;color:var(--purple);cursor:pointer}.number-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.number-btn{font:inherit;border:1px solid #e4e3f6;background:#f9f8ff;border-radius:12px;padding:12px;cursor:pointer}.pill{border-radius:15px;background:#f7f7ff;padding:14px;margin:10px 0;line-height:1.9}.art-shapes{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;font-size:32px;padding:12px}footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
-@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.letter-grid{grid-template-columns:repeat(7,minmax(0,1fr))}}@media(max-width:380px){.letter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.top{align-items:flex-start;flex-direction:column}.number-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-</style></head>
+:root{
+  --purple:#5b52cc;--purple-dark:#4a42b3;
+  --ink:#26304a;--muted:#5a6378;--bg:#f7f8ff;
+  --mint:#dff7ed;--yellow:#fff1bf;--pink:#ffe4ec;--blue:#e2edff;
+  --green:#157347;--red:#b02a3c;--line:#e4e3f6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #8b80f1;outline-offset:2px;border-radius:8px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+header{background:linear-gradient(135deg,#6a5fe0,#8b80f1);color:#fff;padding:24px 18px 30px;border-radius:0 0 28px 28px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-size:22px;font-weight:800}
+.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.badge{background:#ffffff2b;padding:8px 12px;border-radius:20px;font-size:12px}
+.sound-toggle{background:#ffffff2b;border:0;color:#fff;border-radius:20px;padding:8px 12px;font-size:13px;cursor:pointer}
+.sound-toggle:hover{background:#ffffff3d}
+h1{font-size:25px;margin:24px 0 8px;line-height:1.5}
+header p{margin:0;line-height:1.8;color:#f0efff}
+
+.wrap{max-width:900px;margin:auto;padding:18px}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px}
+.section-title h2{font-size:19px;margin:0}
+.section-title small{color:var(--muted)}
+
+.progress{background:#fff;padding:15px;border-radius:18px;box-shadow:0 4px 16px #28285b0f;display:flex;align-items:center;gap:13px}
+.avatar{width:54px;height:54px;border-radius:17px;background:var(--yellow);display:grid;place-items:center;font-size:28px;flex:none}
+.progress strong{display:block;margin-bottom:6px}
+.bar{height:8px;background:#ecebfa;border-radius:10px;overflow:hidden;width:100%;margin-top:8px}
+.bar span{display:block;width:0;height:100%;background:var(--purple);border-radius:10px;transition:width .3s}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:#fff;border-radius:20px;padding:16px;text-align:right;border:0;box-shadow:0 4px 16px #28285b0f;cursor:pointer;min-height:128px;color:var(--ink);font:inherit}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px #28285b1a}
+.card{transition:transform .15s,box-shadow .15s}
+.icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:25px;margin-bottom:12px}
+.card b{font-size:16px;display:block}
+.card small{display:block;color:var(--muted);margin-top:6px;line-height:1.6}
+.mint{background:var(--mint)}.yellow{background:var(--yellow)}.pink{background:var(--pink)}.blue{background:var(--blue)}
+
+.actions{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}
+.primary,.secondary,.danger{border:0;border-radius:14px;padding:13px 16px;font-weight:bold;cursor:pointer}
+.primary{background:var(--purple);color:#fff;flex:1}
+.primary:hover{background:var(--purple-dark)}
+.secondary{background:#fff;color:var(--purple-dark);border:1px solid var(--line)}
+.secondary:hover{background:#f3f2ff}
+.danger{background:#fff;color:var(--red);border:1px solid #f1c8ce}
+.danger:hover{background:#fff4f6}
+
+.panel{display:none;background:#fff;border-radius:20px;padding:18px;margin-top:16px;box-shadow:0 4px 16px #28285b0f;outline:none;scroll-margin-top:16px}
+.panel.active{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.panel h2{margin-top:0}
+
+.lesson-list{display:grid;gap:10px}
+.lesson{background:#f7f7ff;padding:13px;border-radius:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.lesson button{background:var(--purple);color:#fff;border:0;border-radius:10px;padding:9px 12px;cursor:pointer}
+.lesson button:hover{background:var(--purple-dark)}
+
+.bigletter{font-size:78px;text-align:center;color:var(--purple);padding:8px;line-height:1.1}
+.trace{display:block;width:100%;height:190px;border:2px dashed #c8c4f5;border-radius:16px;touch-action:none;background:#fffdf8}
+
+.question{font-size:24px;font-weight:800;text-align:center;background:#f2f1ff;border-radius:16px;padding:18px 12px;margin:14px 0;color:var(--purple-dark);line-height:1.7;word-break:break-word}
+
+.quizopt{display:block;width:100%;margin:8px 0;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:right;cursor:pointer}
+.quizopt:hover:not(:disabled){background:#f3f2ff;border-color:#c8c4f5}
+.quizopt:disabled,.letter-btn:disabled,.number-btn:disabled{opacity:.55;cursor:not-allowed}
+.wrong-pick{background:var(--pink)!important;border-color:#f1c8ce!important}
+
+.notice{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:20px}
+.feedback{font-weight:bold;line-height:1.8;min-height:26px;margin:6px 0}
+.correct{color:var(--green)}
+.wrong{color:var(--red)}
+
+.letter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.letter-btn{border:1px solid var(--line);background:#f9f8ff;border-radius:13px;padding:12px;font-size:27px;color:var(--purple);cursor:pointer}
+.letter-btn:hover:not(:disabled){background:#efedff}
+.number-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.number-btn{border:1px solid var(--line);background:#f9f8ff;border-radius:12px;padding:12px;cursor:pointer;font-size:18px;font-weight:700;color:var(--purple-dark)}
+.number-btn:hover:not(:disabled){background:#efedff}
+.pill{border-radius:15px;background:#f7f7ff;padding:14px;margin:10px 0;line-height:1.9}
+.art-shapes{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;font-size:32px;padding:12px}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,24px);background:var(--ink);color:#fff;
+  padding:13px 20px;border-radius:16px;font-weight:bold;box-shadow:0 8px 24px #26304a55;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
+
+@media(min-width:650px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .letter-grid{grid-template-columns:repeat(7,minmax(0,1fr))}
+}
+@media(max-width:380px){
+  .letter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .number-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .top{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
 <body>
-<header><div class="top"><div class="brand">🌈 تعلّم بسهولة</div><div class="badge">السنة الأولى ابتدائي</div></div><h1>مرحبًا يا بطل! ⭐<br>هيا نتعلّم شيئًا جديدًا</h1><p>دروس وأنشطة وتمارين بسيطة وممتعة.</p></header>
+<header>
+  <div class="top">
+    <div class="brand"><span aria-hidden="true">🌈</span> تعلّم بسهولة</div>
+    <div class="top-actions">
+      <button type="button" id="soundBtn" class="sound-toggle" onclick="toggleSound()" aria-pressed="true">🔊 الصوت</button>
+      <div class="badge">السنة الأولى ابتدائي</div>
+    </div>
+  </div>
+  <h1>مرحبًا يا بطل! ⭐<br>هيا نتعلّم شيئًا جديدًا</h1>
+  <p>دروس وأنشطة وتمارين بسيطة وممتعة.</p>
+</header>
+
 <main class="wrap">
-<div class="progress"><div class="avatar">🧒</div><div style="flex:1"><strong>رحلتك التعليمية</strong><small id="progressText" style="color:var(--muted)">أنجز أول نشاط لتحصل على نقاط!</small><div class="bar"><span id="progressBar"></span></div><small id="pointsText">⭐ النقاط: 0</small></div></div>
-<div class="section-title"><h2>ماذا تريد أن تتعلّم؟</h2><small>اختر مادة</small></div>
-<div class="grid">
-<button class="card" onclick="openSubject('arabic')"><span class="icon mint">🔤</span><b>اللغة العربية</b><small>الحروف والكلمات والكتابة</small></button>
-<button class="card" onclick="openSubject('math')"><span class="icon yellow">🔢</span><b>الرياضيات</b><small>الأعداد والعدّ والعمليات</small></button>
-<button class="card" onclick="openSubject('science')"><span class="icon blue">🌱</span><b>التربية العلمية</b><small>الإنسان والحيوان والنبات</small></button>
-<button class="card" onclick="openSubject('islamic')"><span class="icon pink">🌙</span><b>التربية الإسلامية</b><small>القيم والسلوك الحسن</small></button>
-<button class="card" onclick="openSubject('civic')"><span class="icon yellow">🤝</span><b>التربية المدنية</b><small>التعاون والسلامة</small></button>
-<button class="card" onclick="openSubject('art')"><span class="icon mint">🎨</span><b>التربية الفنية</b><small>الألوان والأشكال والرسم</small></button>
-<button class="card" onclick="openSubject('french')"><span class="icon blue">🇫🇷</span><b>اللغة الفرنسية</b><small>الحروف والكلمات الأساسية</small></button>
-</div>
-<div class="actions"><button class="primary" onclick="openSubject('arabic')">ابدأ التعلّم ←</button><button class="secondary" onclick="showQuiz()">اختبر نفسك ✨</button><button class="secondary" onclick="showProgress()">إنجازاتي 🏆</button></div>
-<section id="panel" class="panel" aria-live="polite"></section>
-<p class="notice">هذه نسخة تعليمية تجريبية بأنشطة مبسطة. راجع توافق الدروس مع المنهاج الرسمي المعتمد في المدرسة؛ فهي ليست بديلًا عن الكتاب المدرسي.</p>
-</main><footer>صُنع بحبّ من أجل التعلّم 💜</footer>
+  <div class="progress">
+    <div class="avatar" aria-hidden="true">🧒</div>
+    <div style="flex:1">
+      <strong>رحلتك التعليمية</strong>
+      <small id="progressText" style="color:var(--muted)">أنجز أول نشاط لتحصل على نقاط!</small>
+      <div class="bar"><span id="progressBar"></span></div>
+      <small id="pointsText">⭐ النقاط: 0</small>
+    </div>
+  </div>
+
+  <div class="section-title"><h2>ماذا تريد أن تتعلّم؟</h2><small>اختر مادة</small></div>
+
+  <div class="grid">
+    <button type="button" class="card" onclick="openSubject('arabic')"><span class="icon mint" aria-hidden="true">🔤</span><b>اللغة العربية</b><small>الحروف والكلمات والكتابة</small></button>
+    <button type="button" class="card" onclick="openSubject('math')"><span class="icon yellow" aria-hidden="true">🔢</span><b>الرياضيات</b><small>الأعداد والعدّ والعمليات</small></button>
+    <button type="button" class="card" onclick="openSubject('science')"><span class="icon blue" aria-hidden="true">🌱</span><b>التربية العلمية</b><small>الإنسان والحيوان والنبات</small></button>
+    <button type="button" class="card" onclick="openSubject('islamic')"><span class="icon pink" aria-hidden="true">🌙</span><b>التربية الإسلامية</b><small>القيم والسلوك الحسن</small></button>
+    <button type="button" class="card" onclick="openSubject('civic')"><span class="icon yellow" aria-hidden="true">🤝</span><b>التربية المدنية</b><small>التعاون والسلامة</small></button>
+    <button type="button" class="card" onclick="openSubject('art')"><span class="icon mint" aria-hidden="true">🎨</span><b>التربية الفنية</b><small>الألوان والأشكال والرسم</small></button>
+    <button type="button" class="card" onclick="openSubject('french')"><span class="icon blue" aria-hidden="true">🇫🇷</span><b>اللغة الفرنسية</b><small>الحروف والكلمات الأساسية</small></button>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="primary" onclick="openSubject('arabic')">ابدأ التعلّم ←</button>
+    <button type="button" class="secondary" onclick="showQuiz()">اختبر نفسك ✨</button>
+    <button type="button" class="secondary" onclick="showProgress()">إنجازاتي 🏆</button>
+  </div>
+
+  <section id="panel" class="panel" tabindex="-1"></section>
+
+  <p class="notice">هذه نسخة تعليمية تجريبية بأنشطة مبسطة. راجع توافق الدروس مع المنهاج الرسمي المعتمد في المدرسة؛ فهي ليست بديلًا عن الكتاب المدرسي. يُستخدم صوت المتصفح لنطق الحروف والكلمات عند توفّره.</p>
+</main>
+
+<footer>صُنع بحبّ من أجل التعلّم 💜</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
 <script>
+/* ================= البيانات ================= */
 const letters=[['ا','أسد'],['ب','بطة'],['ت','تفاحة'],['ث','ثعلب'],['ج','جمل'],['ح','حصان'],['خ','خبز'],['د','دجاجة'],['ذ','ذرة'],['ر','رمان'],['ز','زهرة'],['س','سمكة'],['ش','شمس'],['ص','صقر'],['ض','ضفدع'],['ط','طائرة'],['ظ','ظرف'],['ع','عنب'],['غ','غيمة'],['ف','فراشة'],['ق','قلم'],['ك','كتاب'],['ل','ليمون'],['م','موز'],['ن','نحلة'],['ه','هلال'],['و','وردة'],['ي','يد']];
+
 const data={
-arabic:{title:'اللغة العربية',intro:'تعلّم الحروف والكلمات وتدرّب على الكتابة.',lessons:[['حروف الهجاء','letters'],['التدريب على الكتابة','writing'],['كلمات قصيرة','words'],['اختبار الحروف','arabicquiz']]},
-math:{title:'الرياضيات',intro:'تدرّب على الأعداد والعدّ والجمع والطرح.',lessons:[['الأعداد من 0 إلى 20','numbers'],['العدّ','count'],['الجمع','add'],['الطرح','subtract']]},
-science:{title:'التربية العلمية',intro:'اكتشف جسم الإنسان والحيوانات والنباتات.',lessons:[['أجزاء الجسم','body'],['الحيوانات','animals'],['النباتات','plants'],['النظافة والصحة','hygiene']]},
-islamic:{title:'التربية الإسلامية',intro:'نتعلّم قيمًا وسلوكيات حسنة بطريقة مبسطة.',lessons:[['الصدق والأمانة','honesty'],['النظافة','cleanliness'],['احترام الوالدين','parents'],['السلام والتحية','greeting']]},
-civic:{title:'التربية المدنية',intro:'نتعلّم التعاون واحترام القواعد والسلامة.',lessons:[['التعاون في القسم','teamwork'],['احترام الآخرين','respect'],['السلامة في الطريق','road'],['المحافظة على البيئة','environment']]},
-art:{title:'التربية الفنية',intro:'تعرّف إلى الألوان والأشكال وجرّب الرسم.',lessons:[['الألوان','colors'],['الأشكال','shapes'],['ارسم بإصبعك','drawing']]},
-french:{title:'اللغة الفرنسية',intro:'بداية بسيطة مع الحروف والكلمات الفرنسية.',lessons:[['الحروف A B C','frenchletters'],['كلمات سهلة','frenchwords'],['الألوان بالفرنسية','frenchcolors']]}
+  arabic:{title:'اللغة العربية',intro:'تعلّم الحروف والكلمات وتدرّب على الكتابة.',lessons:[['حروف الهجاء','letters'],['التدريب على الكتابة','writing'],['كلمات قصيرة','words'],['اختبار الحروف','arabicquiz']]},
+  math:{title:'الرياضيات',intro:'تدرّب على الأعداد والعدّ والجمع والطرح.',lessons:[['الأعداد من 0 إلى 20','numbers'],['العدّ','count'],['الجمع','add'],['الطرح','subtract']]},
+  science:{title:'التربية العلمية',intro:'اكتشف جسم الإنسان والحيوانات والنباتات.',lessons:[['أجزاء الجسم','body'],['الحيوانات','animals'],['النباتات','plants'],['النظافة والصحة','hygiene']]},
+  islamic:{title:'التربية الإسلامية',intro:'نتعلّم قيمًا وسلوكيات حسنة بطريقة مبسطة.',lessons:[['الصدق والأمانة','honesty'],['النظافة','cleanliness'],['احترام الوالدين','parents'],['السلام والتحية','greeting']]},
+  civic:{title:'التربية المدنية',intro:'نتعلّم التعاون واحترام القواعد والسلامة.',lessons:[['التعاون في القسم','teamwork'],['احترام الآخرين','respect'],['السلامة في الطريق','road'],['المحافظة على البيئة','environment']]},
+  art:{title:'التربية الفنية',intro:'تعرّف إلى الألوان والأشكال وجرّب الرسم.',lessons:[['الألوان','colors'],['الأشكال','shapes'],['ارسم بإصبعك','drawing']]},
+  french:{title:'اللغة الفرنسية',intro:'بداية بسيطة مع الحروف والكلمات الفرنسية.',lessons:[['الحروف A B C','frenchletters'],['كلمات سهلة','frenchwords'],['الألوان بالفرنسية','frenchcolors']]}
 };
-let points=Number(localStorage.getItem('tbs_points')||0),completed=JSON.parse(localStorage.getItem('tbs_completed')||'[]');
-function updateProgress(){document.getElementById('pointsText').textContent='⭐ النقاط: '+points;document.getElementById('progressBar').style.width=Math.min(100,completed.length*5)+'%';document.getElementById('progressText').textContent=completed.length?'أكملت '+completed.length+' نشاطًا! واصل التقدّم.':'أنجز أول نشاط لتحصل على نقاط!'}
-function reward(id){if(!completed.includes(id)){completed.push(id);points+=10;localStorage.setItem('tbs_points',points);localStorage.setItem('tbs_completed',JSON.stringify(completed));updateProgress()}}
-function flash(msg){let f=document.querySelector('#panel .feedback');if(!f){f=document.createElement('p');f.className='feedback';document.getElementById('panel').appendChild(f)}f.textContent=msg;f.className='feedback correct'}
-function openSubject(key){const d=data[key],p=document.getElementById('panel');p.className='panel active';p.innerHTML='<h2>'+d.title+'</h2><p>'+d.intro+'</p><div class="lesson-list">'+d.lessons.map((l,i)=>'<div class="lesson"><span><b>'+l[0]+'</b><br><small style="color:#727b91">نشاط '+(i+1)+'</small></span><button onclick="openLesson(\''+key+'\','+i+')">افتح</button></div>').join('')+'</div><div class="actions"><button class="secondary" onclick="closePanel()">إغلاق</button></div>';p.scrollIntoView({behavior:'smooth',block:'start'})}
-function openLesson(key,i){const k=data[key].lessons[i][1];if(k==='letters')showLetters();else if(k==='writing')showWriting();else if(k==='words')showWords();else if(k==='arabicquiz')showQuiz();else if(k==='numbers')showNumbers();else if(k==='count')showCount();else if(k==='add'||k==='subtract')showMath(k);else if(['body','animals','plants','hygiene','honesty','cleanliness','parents','greeting','teamwork','respect','road','environment'].includes(k))showInfo(k);else if(k==='colors')showColors();else if(k==='shapes')showShapes();else if(k==='drawing')showDrawing();else if(k==='frenchletters')showFrenchLetters();else if(k==='frenchwords')showFrenchWords();else if(k==='frenchcolors')showFrenchColors()}
-function showLetters(){const p=document.getElementById('panel');p.innerHTML='<h2>حروف الهجاء</h2><p>اضغط على حرف لتراه مع كلمة تبدأ به.</p><div class="letter-grid">'+letters.map((l,i)=>'<button class="letter-btn" onclick="showLetter('+i+')">'+l[0]+'</button>').join('')+'</div><div id="letterDetail" class="pill">اختر حرفًا من الشبكة.</div><button class="secondary" onclick="openSubject(\'arabic\')">عودة</button>'}
-function showLetter(i){const l=letters[i];document.getElementById('letterDetail').innerHTML='<div class="bigletter">'+l[0]+'</div><div style="text-align:center;font-size:24px">'+l[1]+'</div><p style="text-align:center">حرف '+l[0]+' في كلمة '+l[1]+'</p>';reward('letter-'+l[0])}
-function showWriting(){const p=document.getElementById('panel');p.innerHTML='<h2>أتدرّب على الكتابة ✍️</h2><p>اختر حرفًا، ثم تتبّع شكله بإصبعك في المساحة.</p><div class="letter-grid">'+letters.map((l,i)=>'<button class="letter-btn" onclick="setTraceLetter('+i+')">'+l[0]+'</button>').join('')+'</div><div class="bigletter" id="traceLetter">ا</div><canvas id="draw" class="trace" width="600" height="190"></canvas><div class="actions"><button class="primary" onclick="clearDraw()">مسح اللوحة</button><button class="secondary" onclick="reward(\'writing-practice\');flash(\'أحسنت! واصل التدريب ✨\')">أنهيت التدريب</button><button class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';setupDraw()}
-function setTraceLetter(i){document.getElementById('traceLetter').textContent=letters[i][0];clearDraw()}
-function showWords(){const p=document.getElementById('panel'),words=[['باب','🚪'],['بيت','🏠'],['قلم','✏️'],['كتاب','📘'],['شمس','☀️'],['ماء','💧'],['تفاح','🍎'],['سمك','🐟']];p.innerHTML='<h2>كلمات قصيرة</h2><p>اقرأ الكلمة بصوتك وحاول تهجئتها.</p>'+words.map(w=>'<div class="lesson"><b style="font-size:22px">'+w[0]+'</b><span style="font-size:28px">'+w[1]+'</span></div>').join('')+'<button class="primary" onclick="reward(\'arabic-words\');flash(\'أحسنت في القراءة! ⭐\')">أنهيت القراءة</button> <button class="secondary" onclick="openSubject(\'arabic\')">عودة</button>'}
-function showNumbers(){const p=document.getElementById('panel');p.innerHTML='<h2>الأعداد من 0 إلى 20</h2><p>اضغط على عدد لقراءته.</p><div class="number-grid">'+Array.from({length:21},(_,i)=>'<button class="number-btn" onclick="numberDetail('+i+')">'+i+'</button>').join('')+'</div><div id="numberDetail" class="pill">اختر عددًا.</div><button class="secondary" onclick="openSubject(\'math\')">عودة</button>'}
-function numberDetail(n){const names=['صفر','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر','عشرون'];document.getElementById('numberDetail').innerHTML='<div class="question">'+n+' — '+names[n]+'</div>';reward('number-'+n)}
-function showCount(){const p=document.getElementById('panel');p.innerHTML='<h2>العدّ</h2><p>كم عدد التفاحات؟</p><div class="question">🍎 🍎 🍎 🍎</div><div id="countOptions">'+[3,4,5].map(n=>'<button class="quizopt" onclick="simpleAnswer(\'count\','+n+',4)">'+n+'</button>').join('')+'</div><p id="countFeedback" class="feedback"></p><button class="secondary" onclick="openSubject(\'math\')">عودة</button>'}
-function showMath(kind){const a=kind==='add'?2:5,b=kind==='add'?3:2,op=kind==='add'?'+':'−',correct=kind==='add'?5:3,p=document.getElementById('panel');p.innerHTML='<h2>'+(kind==='add'?'الجمع':'الطرح')+'</h2><p>احسب باستعمال الأصابع أو الأشياء.</p><div class="question">'+a+' '+op+' '+b+' = ؟</div><div id="mathOptions">'+[correct,correct+1,Math.max(0,correct-1)].sort(()=>Math.random()-.5).map(n=>'<button class="quizopt" onclick="simpleAnswer(\'math-'+kind+'\','+n+','+correct+')">'+n+'</button>').join('')+'</div><p id="mathFeedback" class="feedback"></p><button class="secondary" onclick="openSubject(\'math\')">عودة</button>'}
-function simpleAnswer(id,n,c){const f=document.getElementById(id==='count'?'countFeedback':'mathFeedback');if(!f)return;if(n===c){f.textContent='أحسنت! إجابة صحيحة ⭐';f.className='feedback correct';reward(id+'-'+n)}else{f.textContent='حاول مرة أخرى، أنت تستطيع!';f.className='feedback wrong'}}
+
 const info={
-body:['أجزاء الجسم','👀 👃 👄 ✋','نستعمل العينين للرؤية، والأذنين للسمع، والأنف للشم، واليدين للمس والإمساك بالأشياء.'],
-animals:['الحيوانات','🐈 🐄 🐦 🐟','توجد حيوانات تعيش في البيت وأخرى في المزرعة أو البرية. تحتاج الحيوانات إلى الغذاء والماء والمأوى.'],
-plants:['النباتات','🌱 🌿 🌻','تحتاج النباتات إلى الماء والضوء والهواء لتنمو، وتساعدنا في الحصول على الغذاء والظل.'],
-hygiene:['النظافة والصحة','🧼 🚿 🪥','نغسل أيدينا بالماء والصابون، وننظف أسناننا، ونحافظ على نظافة ملابسنا ومحيطنا.'],
-honesty:['الصدق والأمانة','🤝 ⭐','الصدق هو قول الحقيقة، والأمانة هي المحافظة على ما اؤتمنّا عليه وإرجاع الأشياء إلى أصحابها.'],
-cleanliness:['النظافة','🧼 💧','النظافة تحافظ على صحتنا. نغسل اليدين قبل الطعام وبعد استعمال المرحاض.'],
-parents:['احترام الوالدين','❤️ 👨‍👩‍👧','نتحدث مع الوالدين بأدب، ونساعدهما بما نستطيع، ونستمع إلى نصائحهما.'],
-greeting:['السلام والتحية','👋 😊','نحيّي الآخرين بلطف، ونردّ التحية، ونستعمل كلمات مثل: السلام عليكم، صباح الخير، وشكرًا.'],
-teamwork:['التعاون في القسم','🧑‍🤝‍🧑 🏫','نتعاون في ترتيب القسم، ونتقاسم الأدوات، ونساعد زملاءنا باحترام.'],
-respect:['احترام الآخرين','💛 🤝','نستمع عندما يتحدث الآخرون، ولا نسخر من أحد، ونحترم الناس.'],
-road:['السلامة في الطريق','🚦 🚸','نعبر من ممر المشاة مع شخص بالغ عند الحاجة، وننظر إلى الجهتين، ونتبع إشارات المرور.'],
-environment:['المحافظة على البيئة','🌳 ♻️','نضع النفايات في سلة المهملات، ونحافظ على الأشجار والماء، ولا نؤذي الحيوانات.']
+  body:['أجزاء الجسم','👀 👃 👄 ✋','نستعمل العينين للرؤية، والأذنين للسمع، والأنف للشم، واليدين للمس والإمساك بالأشياء.'],
+  animals:['الحيوانات','🐈 🐄 🐦 🐟','توجد حيوانات تعيش في البيت وأخرى في المزرعة أو البرية. تحتاج الحيوانات إلى الغذاء والماء والمأوى.'],
+  plants:['النباتات','🌱 🌿 🌻','تحتاج النباتات إلى الماء والضوء والهواء لتنمو، وتساعدنا في الحصول على الغذاء والظل.'],
+  hygiene:['النظافة والصحة','🧼 🚿 🪥','نغسل أيدينا بالماء والصابون، وننظف أسناننا، ونحافظ على نظافة ملابسنا ومحيطنا.'],
+  honesty:['الصدق والأمانة','🤝 ⭐','الصدق هو قول الحقيقة، والأمانة هي المحافظة على ما اؤتمنّا عليه وإرجاع الأشياء إلى أصحابها.'],
+  cleanliness:['النظافة','🧼 💧','النظافة تحافظ على صحتنا. نغسل اليدين قبل الطعام وبعد استعمال المرحاض.'],
+  parents:['احترام الوالدين','❤️ 👨‍👩‍👧','نتحدث مع الوالدين بأدب، ونساعدهما بما نستطيع، ونستمع إلى نصائحهما.'],
+  greeting:['السلام والتحية','👋 😊','نحيّي الآخرين بلطف، ونردّ التحية، ونستعمل كلمات مثل: السلام عليكم، صباح الخير، وشكرًا.'],
+  teamwork:['التعاون في القسم','🧑‍🤝‍🧑 🏫','نتعاون في ترتيب القسم، ونتقاسم الأدوات، ونساعد زملاءنا باحترام.'],
+  respect:['احترام الآخرين','💛 🤝','نستمع عندما يتحدث الآخرون، ولا نسخر من أحد، ونحترم الناس.'],
+  road:['السلامة في الطريق','🚦 🚸','نعبر من ممر المشاة مع شخص بالغ عند الحاجة، وننظر إلى الجهتين، ونتبع إشارات المرور.'],
+  environment:['المحافظة على البيئة','🌳 ♻️','نضع النفايات في سلة المهملات، ونحافظ على الأشجار والماء، ولا نؤذي الحيوانات.']
 };
-function showInfo(k){const d=info[k],p=document.getElementById('panel');p.innerHTML='<h2>'+d[0]+'</h2><div class="art-shapes">'+d[1]+'</div><div class="pill">'+d[2]+'</div><button class="primary" onclick="reward(\'info-'+k+'\');flash(\'رائع! تعلّمت معلومة جديدة ⭐\')">أنهيت الدرس</button> <button class="secondary" onclick="backInfo(\''+k+'\')">عودة</button>'}
-function backInfo(k){openSubject(['body','animals','plants','hygiene'].includes(k)?'science':['honesty','cleanliness','parents','greeting'].includes(k)?'islamic':'civic')}
-function showColors(){const p=document.getElementById('panel');p.innerHTML='<h2>الألوان</h2><p>تعرّف إلى الألوان الأساسية.</p>'+[['أحمر','التفاحة','🔴'],['أزرق','السماء','🔵'],['أصفر','الشمس','🟡'],['أخضر','العشب','🟢']].map(x=>'<div class="lesson"><b>'+x[0]+' '+x[2]+'</b><span>مثل '+x[1]+'</span></div>').join('')+'<button class="primary" onclick="reward(\'art-colors\');flash(\'أحسنت يا فنان! 🎨\')">أنهيت الدرس</button> <button class="secondary" onclick="openSubject(\'art\')">عودة</button>'}
-function showShapes(){const p=document.getElementById('panel');p.innerHTML='<h2>الأشكال</h2><div class="art-shapes">🔴 دائرة　🟥 مربع　🔺 مثلث　▭ مستطيل</div><div class="pill">ابحث حولك عن أشياء تشبه هذه الأشكال.</div><button class="primary" onclick="reward(\'art-shapes\');flash(\'رائع! 👏\')">أنهيت الدرس</button> <button class="secondary" onclick="openSubject(\'art\')">عودة</button>'}
-function showDrawing(){const p=document.getElementById('panel');p.innerHTML='<h2>ارسم بإصبعك 🎨</h2><p>ارسم شكلًا أو خطًا في المساحة.</p><canvas id="draw" class="trace" width="600" height="190"></canvas><div class="actions"><button class="primary" onclick="clearDraw()">مسح</button><button class="secondary" onclick="reward(\'art-drawing\');flash(\'عمل فني رائع! ⭐\')">أنهيت الرسم</button><button class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';setupDraw()}
-function showFrenchLetters(){const p=document.getElementById('panel');p.innerHTML='<h2>Les lettres</h2><div class="letter-grid">'+ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(x=>'<button class="letter-btn" onclick="flash(\'Lettre : '+x+'\')">'+x+'</button>').join('')+'</div><button class="secondary" onclick="openSubject(\'french\')">Retour</button>'}
-function showFrenchWords(){const p=document.getElementById('panel'),w=[['Bonjour','مرحبًا'],['Merci','شكرًا'],['Papa','أبي'],['Maman','أمي'],['Livre','كتاب'],['École','مدرسة']];p.innerHTML='<h2>Quelques mots</h2>'+w.map(x=>'<div class="lesson"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'<button class="primary" onclick="reward(\'french-words\');flash(\'Très bien! ⭐\')">Terminé</button> <button class="secondary" onclick="openSubject(\'french\')">Retour</button>'}
-function showFrenchColors(){const p=document.getElementById('panel');p.innerHTML='<h2>Les couleurs</h2>'+[['Rouge','أحمر','🔴'],['Bleu','أزرق','🔵'],['Jaune','أصفر','🟡'],['Vert','أخضر','🟢']].map(x=>'<div class="lesson"><b>'+x[0]+'</b><span>'+x[1]+' '+x[2]+'</span></div>').join('')+'<button class="primary" onclick="reward(\'french-colors\');flash(\'Très bien! ⭐\')">Terminé</button> <button class="secondary" onclick="openSubject(\'french\')">Retour</button>'}
-const questions=[{q:'ما الحرف الأول في كلمة «أسد»؟',opts:['ب','أ','م'],a:1},{q:'كم يساوي 2 + 3؟',opts:['4','5','6'],a:1},{q:'ماذا تحتاج النبتة لتنمو؟',opts:['الماء','الألعاب فقط','الحجارة فقط'],a:0},{q:'ماذا نقول عندما يساعدنا أحد؟',opts:['شكرًا','لا شيء','ابتعد'],a:0},{q:'ما لون العشب غالبًا؟',opts:['أخضر','وردي','بنفسجي'],a:0}];let qi=0,score=0;
+
+const questions=[
+  {q:'ما الحرف الأول في كلمة «أسد»؟',opts:['ب','أ','م'],a:1},
+  {q:'كم يساوي 2 + 3؟',opts:['4','5','6'],a:1},
+  {q:'ماذا تحتاج النبتة لتنمو؟',opts:['الماء','الألعاب فقط','الحجارة فقط'],a:0},
+  {q:'ماذا نقول عندما يساعدنا أحد؟',opts:['شكرًا','لا شيء','ابتعد'],a:0},
+  {q:'ما لون العشب غالبًا؟',opts:['أخضر','وردي','بنفسجي'],a:0}
+];
+
+const NUM_NAMES=['صفر','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر','عشرون'];
+
+/* ================= قائمة كل الأنشطة (لحساب التقدّم بدقّة) ================= */
+const ALL_ACTIVITIES=(function(){
+  const s=new Set();
+  letters.forEach(function(l){s.add('letter-'+l[0])});
+  for(let i=0;i<=20;i++) s.add('number-'+i);
+  Object.keys(info).forEach(function(k){s.add('info-'+k)});
+  ['writing-practice','arabic-words','quiz-complete','count-correct',
+   'math-add-correct','math-subtract-correct','art-colors','art-shapes',
+   'art-drawing','french-words','french-colors'].forEach(function(id){s.add(id)});
+  return s;
+})();
+const TOTAL_ACTIVITIES=ALL_ACTIVITIES.size;
+
+/* ================= أدوات مساعدة ================= */
+const panel=function(){return document.getElementById('panel')};
+function rnd(a,b){return a+Math.floor(Math.random()*(b-a+1))}
+function shuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){const j=rnd(0,i);const t=a[i];a[i]=a[j];a[j]=t}
+  return a;
+}
+function uniqueShuffled(list){
+  const seen=new Set(),out=[];
+  list.forEach(function(v){if(!seen.has(v)){seen.add(v);out.push(v)}});
+  return shuffle(out);
+}
+
+/* ================= التخزين الآمن ================= */
+const K_POINTS='tbs_points',K_DONE='tbs_completed';
+let points=0,completed=[];
+
+function loadState(){
+  try{
+    const n=parseInt(localStorage.getItem(K_POINTS),10);
+    if(Number.isFinite(n)&&n>=0) points=n;
+  }catch(e){points=0}
+  try{
+    const raw=localStorage.getItem(K_DONE);
+    const arr=raw?JSON.parse(raw):[];
+    if(Array.isArray(arr)) completed=arr.filter(function(x){return typeof x==='string'&&ALL_ACTIVITIES.has(x)});
+  }catch(e){completed=[]}
+}
+function saveState(){
+  try{
+    localStorage.setItem(K_POINTS,String(points));
+    localStorage.setItem(K_DONE,JSON.stringify(completed));
+  }catch(e){/* التخزين غير متاح — نتابع بلا حفظ */}
+}
+
+/* ================= النطق ================= */
+let soundOn=true;
+const voiceCache={};
+function pickVoice(lang){
+  if(!('speechSynthesis' in window)) return null;
+  const key=String(lang||'ar').slice(0,2).toLowerCase();
+  if(Object.prototype.hasOwnProperty.call(voiceCache,key)) return voiceCache[key];
+  let v=null;
+  try{
+    v=speechSynthesis.getVoices().find(function(x){return x.lang&&x.lang.toLowerCase().indexOf(key)===0})||null;
+  }catch(e){v=null}
+  voiceCache[key]=v;
+  return v;
+}
+if('speechSynthesis' in window){
+  try{speechSynthesis.addEventListener('voiceschanged',function(){
+    Object.keys(voiceCache).forEach(function(k){delete voiceCache[k]});
+  })}catch(e){}
+}
+function speak(text,lang){
+  if(!soundOn||!text) return;
+  if(!('speechSynthesis' in window)) return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(String(text));
+    u.lang=lang||'ar-SA';
+    const v=pickVoice(u.lang);
+    if(v) u.voice=v;
+    u.rate=0.85;u.pitch=1;
+    setTimeout(function(){ if(soundOn){ try{speechSynthesis.speak(u)}catch(e){} } },60);
+  }catch(e){}
+}
+function toggleSound(){
+  soundOn=!soundOn;
+  const b=document.getElementById('soundBtn');
+  if(b){
+    b.textContent=soundOn?'🔊 الصوت':'🔇 صامت';
+    b.setAttribute('aria-pressed',String(soundOn));
+  }
+  if(!soundOn&&'speechSynthesis' in window){try{speechSynthesis.cancel()}catch(e){}}
+  else speak('الصوت مفعّل');
+}
+
+/* ================= رسائل ================= */
+let toastTimer=null;
+function flash(msg){
+  const t=document.getElementById('toast');
+  if(!t) return;
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){t.classList.remove('show')},2400);
+}
+
+/* ================= التقدّم والمكافآت ================= */
+function updateProgress(){
+  const n=completed.length;
+  const pct=TOTAL_ACTIVITIES?Math.min(100,Math.round(n/TOTAL_ACTIVITIES*100)):0;
+  const bar=document.getElementById('progressBar');
+  const pts=document.getElementById('pointsText');
+  const txt=document.getElementById('progressText');
+  if(bar) bar.style.width=pct+'%';
+  if(pts) pts.textContent='⭐ النقاط: '+points;
+  if(txt) txt.textContent=n
+    ? 'أكملت '+n+' من '+TOTAL_ACTIVITIES+' نشاطًا ('+pct+'٪). واصل التقدّم!'
+    : 'أنجز أول نشاط لتحصل على نقاط!';
+}
+function reward(id){
+  if(!id||!ALL_ACTIVITIES.has(id)||completed.indexOf(id)!==-1) return;
+  completed.push(id);
+  points+=10;
+  saveState();
+  updateProgress();
+}
+
+/* ================= التنقّل ================= */
+function focusPanel(p){
+  if(!p) return;
+  try{p.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){p.scrollIntoView()}
+  try{p.focus({preventScroll:true})}catch(e){}
+}
+function openSubject(key){
+  const d=data[key];
+  const p=panel();
+  if(!d||!p) return;
+  p.className='panel active';
+  p.innerHTML='<h2>'+d.title+'</h2><p>'+d.intro+'</p><div class="lesson-list">'
+    +d.lessons.map(function(l,i){
+      return '<div class="lesson"><span><b>'+l[0]+'</b><br><small style="color:var(--muted)">نشاط '+(i+1)+'</small></span>'
+        +'<button type="button" onclick="openLesson(\''+key+'\','+i+')">افتح</button></div>';
+    }).join('')
+    +'</div><div class="actions"><button type="button" class="secondary" onclick="closePanel()">إغلاق</button></div>';
+  focusPanel(p);
+}
+function openLesson(key,i){
+  const lesson=data[key]&&data[key].lessons[i];
+  if(!lesson){flash('هذا الدرس غير متاح.');return}
+  const fn=handlers[lesson[1]];
+  if(typeof fn==='function') fn();
+  else flash('هذا الدرس غير متاح بعد.');
+}
+function closePanel(){
+  const p=panel();
+  if(!p) return;
+  p.className='panel';
+  p.innerHTML='';
+}
+
+/* ================= العربية ================= */
+function showLetters(){
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>حروف الهجاء</h2><p>اضغط على حرف لتراه مع كلمة تبدأ به، واستمع إلى نطقه.</p>'
+    +'<div class="letter-grid">'+letters.map(function(l,i){
+      return '<button type="button" class="letter-btn" onclick="showLetter('+i+')">'+l[0]+'</button>';
+    }).join('')+'</div>'
+    +'<div id="letterDetail" class="pill">اختر حرفًا من الشبكة.</div>'
+    +'<div class="actions"><button type="button" class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';
+  focusPanel(p);
+}
+function showLetter(i){
+  const l=letters[i];
+  const box=document.getElementById('letterDetail');
+  if(!l||!box) return;
+  box.innerHTML='<div class="bigletter">'+l[0]+'</div>'
+    +'<div style="text-align:center;font-size:24px">'+l[1]+'</div>'
+    +'<p style="text-align:center;margin:8px 0 0">حرف '+l[0]+' في كلمة '+l[1]+'</p>'
+    +'<div style="text-align:center;margin-top:10px"><button type="button" class="secondary" onclick="speakLetter('+i+')">🔊 استمع</button></div>';
+  speakLetter(i);
+  reward('letter-'+l[0]);
+}
+function speakLetter(i){
+  const l=letters[i];
+  if(l) speak(l[0]+'، '+l[1]);
+}
+
+function showWriting(){
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>أتدرّب على الكتابة ✍️</h2><p>اختر حرفًا، ثم تتبّع شكله بإصبعك في المساحة.</p>'
+    +'<div class="letter-grid">'+letters.map(function(l,i){
+      return '<button type="button" class="letter-btn" onclick="setTraceLetter('+i+')">'+l[0]+'</button>';
+    }).join('')+'</div>'
+    +'<div class="bigletter" id="traceLetter">ا</div>'
+    +'<canvas id="draw" class="trace" aria-label="مساحة التدريب على الكتابة"></canvas>'
+    +'<div class="actions"><button type="button" class="primary" onclick="clearDraw()">مسح اللوحة</button>'
+    +'<button type="button" class="secondary" onclick="reward(\'writing-practice\');flash(\'أحسنت! واصل التدريب ✨\')">أنهيت التدريب</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';
+  setupDraw(document.getElementById('draw'));
+  focusPanel(p);
+}
+function setTraceLetter(i){
+  const l=letters[i];
+  const el=document.getElementById('traceLetter');
+  if(!l||!el) return;
+  el.textContent=l[0];
+  clearDraw();
+  speak(l[0]);
+}
+
+function showWords(){
+  const words=[['باب','🚪'],['بيت','🏠'],['قلم','✏️'],['كتاب','📘'],['شمس','☀️'],['ماء','💧'],['تفاح','🍎'],['سمك','🐟']];
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>كلمات قصيرة</h2><p>اقرأ الكلمة بصوتك، ثم اضغط 🔊 لتسمعها.</p>'
+    +words.map(function(w){
+      return '<div class="lesson"><b style="font-size:22px">'+w[0]+'</b>'
+        +'<span style="font-size:28px" aria-hidden="true">'+w[1]+'</span>'
+        +'<button type="button" onclick="speak(\''+w[0]+'\')" aria-label="استمع إلى كلمة '+w[0]+'">🔊</button></div>';
+    }).join('')
+    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'arabic-words\');flash(\'أحسنت في القراءة! ⭐\')">أنهيت القراءة</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';
+  focusPanel(p);
+}
+
+/* ================= الرياضيات ================= */
+function showNumbers(){
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>الأعداد من 0 إلى 20</h2><p>اضغط على عدد لقراءته والاستماع إليه.</p>'
+    +'<div class="number-grid">'+Array.from({length:21},function(_,i){
+      return '<button type="button" class="number-btn" onclick="numberDetail('+i+')" aria-label="العدد '+i+'">'+i+'</button>';
+    }).join('')+'</div>'
+    +'<div id="numberDetail" class="pill">اختر عددًا.</div>'
+    +'<div class="actions"><button type="button" class="secondary" onclick="openSubject(\'math\')">عودة</button></div>';
+  focusPanel(p);
+}
+function numberDetail(n){
+  const box=document.getElementById('numberDetail');
+  if(!box) return;
+  box.innerHTML='<div style="font-size:46px;font-weight:800;text-align:center;color:var(--purple-dark);line-height:1.2">'+n+'</div>'
+    +'<div style="text-align:center;font-size:20px">'+NUM_NAMES[n]+'</div>';
+  speak(NUM_NAMES[n]);
+  reward('number-'+n);
+}
+
+function showCount(){
+  const total=rnd(3,7);
+  const correct=total;
+  const pool=[correct-1,correct,correct+1,correct+2].filter(function(v){return v>0});
+  const opts=uniqueShuffled(pool).slice(0,3);
+  if(opts.indexOf(correct)===-1) opts[opts.length-1]=correct;
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>العدّ</h2><p>كم عدد التفاحات؟ عُدّها بإصبعك.</p>'
+    +'<div class="question" aria-label="'+total+' تفاحات">'+new Array(total+1).join('🍎 ').trim()+'</div>'
+    +'<div id="countOptions">'+opts.map(function(n){
+      return '<button type="button" class="quizopt" onclick="answerCount(this,'+n+','+correct+')">'+n+'</button>';
+    }).join('')+'</div>'
+    +'<p id="countFeedback" class="feedback" role="status"></p>'
+    +'<div class="actions"><button type="button" class="secondary" onclick="showCount()">سؤال آخر ↻</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'math\')">عودة</button></div>';
+  focusPanel(p);
+}
+function answerCount(btn,chosen,correct){
+  const wrap=document.getElementById('countOptions');
+  const f=document.getElementById('countFeedback');
+  if(!wrap||!f||wrap.dataset.done) return;
+  if(chosen===correct){
+    wrap.dataset.done='1';
+    Array.prototype.forEach.call(wrap.querySelectorAll('button'),function(b){b.disabled=true});
+    f.textContent='أحسنت! إجابة صحيحة ⭐';
+    f.className='feedback correct';
+    speak('أحسنت، العدد '+correct);
+    reward('count-correct');
+  }else{
+    btn.disabled=true;
+    f.textContent='ليست الإجابة الصحيحة، عُدّ التفاحات مرة أخرى 💡';
+    f.className='feedback wrong';
+  }
+}
+
+function showMath(kind){
+  const isAdd=kind==='add';
+  const a=isAdd?rnd(1,8):rnd(3,10);
+  const b=isAdd?rnd(1,10-a):rnd(1,a);
+  const correct=isAdd?a+b:a-b;
+  const pool=[correct+1,correct,correct-1,correct+2].filter(function(v){return v>=0});
+  const opts=uniqueShuffled(pool).slice(0,3);
+  if(opts.indexOf(correct)===-1) opts[opts.length-1]=correct;
+  const op=isAdd?'+':'−';
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>'+(isAdd?'الجمع':'الطرح')+'</h2><p>احسب باستعمال الأصابع أو الأشياء، ثم اختر الجواب.</p>'
+    +'<div class="question">'+a+' '+op+' '+b+' = ؟</div>'
+    +'<div id="mathOptions">'+opts.map(function(n){
+      return '<button type="button" class="quizopt" onclick="answerMath(this,'+n+','+correct+',\''+kind+'\')">'+n+'</button>';
+    }).join('')+'</div>'
+    +'<p id="mathFeedback" class="feedback" role="status"></p>'
+    +'<div class="actions"><button type="button" class="secondary" onclick="showMath(\''+kind+'\')">سؤال آخر ↻</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'math\')">عودة</button></div>';
+  focusPanel(p);
+}
+function answerMath(btn,chosen,correct,kind){
+  const wrap=document.getElementById('mathOptions');
+  const f=document.getElementById('mathFeedback');
+  if(!wrap||!f||wrap.dataset.done) return;
+  if(chosen===correct){
+    wrap.dataset.done='1';
+    Array.prototype.forEach.call(wrap.querySelectorAll('button'),function(b){b.disabled=true});
+    f.textContent='أحسنت! إجابة صحيحة ⭐';
+    f.className='feedback correct';
+    speak('أحسنت، الجواب '+correct);
+    reward(kind==='add'?'math-add-correct':'math-subtract-correct');
+  }else{
+    btn.disabled=true;
+    f.textContent='حاول مرة أخرى، أنت تستطيع! 💪';
+    f.className='feedback wrong';
+  }
+}
+
+/* ================= دروس معلوماتية ================= */
+function showInfo(k){
+  const d=info[k];
+  const p=panel();
+  if(!d||!p) return;
+  p.className='panel active';
+  p.innerHTML='<h2>'+d[0]+'</h2>'
+    +'<div class="art-shapes" aria-hidden="true">'+d[1]+'</div>'
+    +'<div class="pill">'+d[2]+'</div>'
+    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'info-'+k+'\');speakInfo(\''+k+'\');flash(\'رائع! تعلّمت معلومة جديدة ⭐\')">أنهيت الدرس</button>'
+    +'<button type="button" class="secondary" onclick="speakInfo(\''+k+'\')">🔊 استمع</button>'
+    +'<button type="button" class="secondary" onclick="backInfo(\''+k+'\')">عودة</button></div>';
+  focusPanel(p);
+}
+function speakInfo(k){
+  const d=info[k];
+  if(d) speak(d[0]+'. '+d[2]);
+}
+function backInfo(k){
+  openSubject(['body','animals','plants','hygiene'].indexOf(k)!==-1?'science'
+    :['honesty','cleanliness','parents','greeting'].indexOf(k)!==-1?'islamic':'civic');
+}
+
+/* ================= التربية الفنية ================= */
+function showColors(){
+  const items=[['أحمر','التفاحة','🔴'],['أزرق','السماء','🔵'],['أصفر','الشمس','🟡'],['أخضر','العشب','🟢']];
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>الألوان</h2><p>تعرّف إلى الألوان الأساسية واضغط 🔊 للاستماع.</p>'
+    +items.map(function(x){
+      return '<div class="lesson"><b>'+x[0]+' <span aria-hidden="true">'+x[2]+'</span></b>'
+        +'<span style="color:var(--muted)">مثل '+x[1]+'</span>'
+        +'<button type="button" onclick="speak(\''+x[0]+'، مثل '+x[1]+'\')" aria-label="استمع إلى '+x[0]+'">🔊</button></div>';
+    }).join('')
+    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'art-colors\');flash(\'أحسنت يا فنان! 🎨\')">أنهيت الدرس</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';
+  focusPanel(p);
+}
+function showShapes(){
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>الأشكال</h2>'
+    +'<div class="art-shapes" aria-hidden="true">🔴 دائرة　🟥 مربع　🔺 مثلث　▭ مستطيل</div>'
+    +'<div class="pill">ابحث حولك عن أشياء تشبه هذه الأشكال.</div>'
+    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'art-shapes\');flash(\'رائع! 👏\')">أنهيت الدرس</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';
+  focusPanel(p);
+}
+function showDrawing(){
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>ارسم بإصبعك 🎨</h2><p>ارسم شكلًا أو خطًا في المساحة.</p>'
+    +'<canvas id="draw" class="trace" aria-label="مساحة الرسم"></canvas>'
+    +'<div class="actions"><button type="button" class="primary" onclick="clearDraw()">مسح</button>'
+    +'<button type="button" class="secondary" onclick="reward(\'art-drawing\');flash(\'عمل فني رائع! ⭐\')">أنهيت الرسم</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';
+  setupDraw(document.getElementById('draw'));
+  focusPanel(p);
+}
+
+/* ================= الفرنسية ================= */
+function showFrenchLetters(){
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>Les lettres</h2><p>اضغط على حرف لسماع نطقه بالفرنسية.</p>'
+    +'<div class="letter-grid">'+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function(x){
+      return '<button type="button" class="letter-btn" onclick="speak(\''+x+'\',\'fr-FR\')">'+x+'</button>';
+    }).join('')+'</div>'
+    +'<div class="actions"><button type="button" class="secondary" onclick="openSubject(\'french\')">Retour</button></div>';
+  focusPanel(p);
+}
+function showFrenchWords(){
+  const words=[['Bonjour','مرحبًا'],['Merci','شكرًا'],['Papa','أبي'],['Maman','أمي'],['Livre','كتاب'],['École','مدرسة']];
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>Quelques mots</h2>'
+    +words.map(function(x){
+      return '<div class="lesson"><b>'+x[0]+'</b><span style="color:var(--muted)">'+x[1]+'</span>'
+        +'<button type="button" onclick="speak(\''+x[0]+'\',\'fr-FR\')" aria-label="استمع إلى '+x[0]+'">🔊</button></div>';
+    }).join('')
+    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'french-words\');flash(\'Très bien! ⭐\')">Terminé</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'french\')">Retour</button></div>';
+  focusPanel(p);
+}
+function showFrenchColors(){
+  const items=[['Rouge','أحمر','🔴'],['Bleu','أزرق','🔵'],['Jaune','أصفر','🟡'],['Vert','أخضر','🟢']];
+  const p=panel();
+  p.className='panel active';
+  p.innerHTML='<h2>Les couleurs</h2>'
+    +items.map(function(x){
+      return '<div class="lesson"><b>'+x[0]+'</b>'
+        +'<span style="color:var(--muted)">'+x[1]+' <span aria-hidden="true">'+x[2]+'</span></span>'
+        +'<button type="button" onclick="speak(\''+x[0]+'\',\'fr-FR\')" aria-label="استمع إلى '+x[0]+'">🔊</button></div>';
+    }).join('')
+    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'french-colors\');flash(\'Très bien! ⭐\')">Terminé</button>'
+    +'<button type="button" class="secondary" onclick="openSubject(\'french\')">Retour</button></div>';
+  focusPanel(p);
+}
+
+/* ================= الاختبار ================= */
+let qi=0,score=0;
 function showQuiz(){qi=0;score=0;renderQuiz()}
-function renderQuiz(){const p=document.getElementById('panel');p.className='panel active';if(qi>=questions.length){p.innerHTML='<h2>انتهى الاختبار! 🏆</h2><div class="question">نتيجتك: '+score+' / '+questions.length+'</div><p class="feedback">'+(score>=3?'أحسنت! واصل التعلّم.':'عمل جيد! حاول مرة أخرى.')+'</p><button class="primary" onclick="reward(\'quiz-'+score+'\');showQuiz()">أعد الاختبار</button> <button class="secondary" onclick="closePanel()">إغلاق</button>';return}const q=questions[qi];p.innerHTML='<h2>اختبر نفسك ✨ ('+(qi+1)+'/'+questions.length+')</h2><div class="question">'+q.q+'</div>'+q.opts.map((o,i)=>'<button class="quizopt" onclick="quizAnswer('+i+')">'+o+'</button>').join('')}
-function quizAnswer(i){const q=questions[qi],p=document.getElementById('panel');if(i===q.a)score++;const f=document.createElement('p');f.className='feedback '+(i===q.a?'correct':'wrong');f.textContent=i===q.a?'إجابة صحيحة! ⭐':'الإجابة الصحيحة: '+q.opts[q.a];p.appendChild(f);p.querySelectorAll('.quizopt').forEach(b=>b.disabled=true);const n=document.createElement('button');n.className='primary';n.textContent=qi===questions.length-1?'عرض النتيجة':'السؤال التالي ←';n.onclick=()=>{qi++;renderQuiz()};p.appendChild(n)}
-function showProgress(){const p=document.getElementById('panel');p.className='panel active';p.innerHTML='<h2>إنجازاتي 🏆</h2><div class="question">⭐ '+points+' نقطة</div><p>عدد الأنشطة المنجزة: '+completed.length+'</p><p>كل نشاط جديد يمنحك 10 نقاط مرة واحدة.</p><button class="secondary" onclick="closePanel()">إغلاق</button>';p.scrollIntoView({behavior:'smooth'})}
-function setupDraw(){const c=document.getElementById('draw');if(!c)return;const ctx=c.getContext('2d');let drawing=false;ctx.lineWidth=5;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#6c63d9';function pos(e){const r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}}c.onpointerdown=e=>{drawing=true;c.setPointerCapture(e.pointerId);const q=pos(e);ctx.beginPath();ctx.moveTo(q.x,q.y)};c.onpointermove=e=>{if(!drawing)return;const q=pos(e);ctx.lineTo(q.x,q.y);ctx.stroke()};c.onpointerup=c.onpointercancel=()=>drawing=false}
-function clearDraw(){const c=document.getElementById('draw');if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)}
-function closePanel(){const p=document.getElementById('panel');p.className='panel';p.innerHTML=''}
+function renderQuiz(){
+  const p=panel();
+  if(!p) return;
+  p.className='panel active';
+  if(qi>=questions.length){
+    p.innerHTML='<h2>انتهى الاختبار! 🏆</h2>'
+      +'<div class="question">نتيجتك: '+score+' من '+questions.length+'</div>'
+      +'<p class="feedback">'+(score>=3?'أحسنت! واصل التعلّم. ⭐':'عمل جيد! حاول مرة أخرى. 💪')+'</p>'
+      +'<div class="actions"><button type="button" class="primary" onclick="showQuiz()">أعد الاختبار</button>'
+      +'<button type="button" class="secondary" onclick="closePanel()">إغلاق</button></div>';
+    reward('quiz-complete');
+    focusPanel(p);
+    return;
+  }
+  const q=questions[qi];
+  p.innerHTML='<h2>اختبر نفسك ✨ ('+(qi+1)+'/'+questions.length+')</h2>'
+    +'<div class="question">'+q.q+'</div>'
+    +'<div id="quizOptions">'+q.opts.map(function(o,i){
+      return '<button type="button" class="quizopt" onclick="quizAnswer(this,'+i+')">'+o+'</button>';
+    }).join('')+'</div>'
+    +'<p id="quizFeedback" class="feedback" role="status"></p>'
+    +'<div id="quizNext"></div>';
+  focusPanel(p);
+}
+function quizAnswer(btn,i){
+  const q=questions[qi];
+  const wrap=document.getElementById('quizOptions');
+  const f=document.getElementById('quizFeedback');
+  if(!q||!wrap||!f||wrap.dataset.done) return;
+  wrap.dataset.done='1';
+  Array.prototype.forEach.call(wrap.querySelectorAll('button'),function(b){b.disabled=true});
+  if(i===q.a){
+    score++;
+    f.textContent='إجابة صحيحة! ⭐';
+    f.className='feedback correct';
+    speak('إجابة صحيحة');
+  }else{
+    btn.className+=' wrong-pick';
+    f.textContent='الإجابة الصحيحة: '+q.opts[q.a];
+    f.className='feedback wrong';
+  }
+  const n=document.createElement('button');
+  n.type='button';
+  n.className='primary';
+  n.textContent=qi===questions.length-1?'عرض النتيجة':'السؤال التالي ←';
+  n.onclick=function(){qi++;renderQuiz()};
+  const box=document.getElementById('quizNext');
+  if(box) box.appendChild(n);
+}
+
+/* ================= الإنجازات ================= */
+function showProgress(){
+  const p=panel();
+  if(!p) return;
+  const pct=TOTAL_ACTIVITIES?Math.round(completed.length/TOTAL_ACTIVITIES*100):0;
+  p.className='panel active';
+  p.innerHTML='<h2>إنجازاتي 🏆</h2>'
+    +'<div class="question">⭐ '+points+' نقطة</div>'
+    +'<div class="pill">عدد الأنشطة المنجزة: <b>'+completed.length+'</b> من '+TOTAL_ACTIVITIES+' ('+pct+'٪)</div>'
+    +'<p style="color:var(--muted);font-size:13px;line-height:1.9;margin:0">كل نشاط جديد يمنحك 10 نقاط مرة واحدة فقط.</p>'
+    +'<div class="actions"><button type="button" class="secondary" onclick="closePanel()">إغلاق</button>'
+    +'<button type="button" class="danger" onclick="resetProgress()">تصفير التقدّم 🗑️</button></div>';
+  focusPanel(p);
+}
+function resetProgress(){
+  if(!window.confirm('هل تريد مسح كل التقدّم والنقاط والبدء من جديد؟')) return;
+  points=0;completed=[];
+  saveState();updateProgress();closePanel();
+  flash('تم البدء من جديد ✨');
+}
+
+/* ================= لوحة الرسم (Canvas) ================= */
+function setupDraw(canvas){
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  if(!ctx) return;
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+
+  function resize(){
+    const r=canvas.getBoundingClientRect();
+    const w=Math.max(1,Math.round(r.width||600));
+    const h=Math.max(1,Math.round(r.height||190));
+    canvas.width=Math.round(w*dpr);
+    canvas.height=Math.round(h*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.lineWidth=5;
+    ctx.lineCap='round';
+    ctx.lineJoin='round';
+    ctx.strokeStyle='#5b52cc';
+  }
+  resize();
+
+  let drawing=false;
+  function pos(e){
+    const r=canvas.getBoundingClientRect();
+    return {x:e.clientX-r.left,y:e.clientY-r.top};
+  }
+  canvas.addEventListener('pointerdown',function(e){
+    drawing=true;
+    try{canvas.setPointerCapture(e.pointerId)}catch(_){}
+    const q=pos(e);
+    ctx.beginPath();
+    ctx.moveTo(q.x,q.y);
+    e.preventDefault();
+  });
+  canvas.addEventListener('pointermove',function(e){
+    if(!drawing) return;
+    const q=pos(e);
+    ctx.lineTo(q.x,q.y);
+    ctx.stroke();
+    e.preventDefault();
+  });
+  function end(){drawing=false}
+  canvas.addEventListener('pointerup',end);
+  canvas.addEventListener('pointercancel',end);
+  canvas.addEventListener('pointerleave',end);
+
+  canvas._ctx=ctx;
+  canvas._dpr=dpr;
+}
+function clearDraw(){
+  const c=document.getElementById('draw');
+  if(!c) return;
+  const ctx=c._ctx||c.getContext('2d');
+  if(!ctx) return;
+  ctx.save();
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.restore();
+}
+
+/* ================= الموجّه ================= */
+const handlers={
+  letters:showLetters,
+  writing:showWriting,
+  words:showWords,
+  arabicquiz:showQuiz,
+  numbers:showNumbers,
+  count:showCount,
+  add:function(){showMath('add')},
+  subtract:function(){showMath('subtract')},
+  colors:showColors,
+  shapes:showShapes,
+  drawing:showDrawing,
+  frenchletters:showFrenchLetters,
+  frenchwords:showFrenchWords,
+  frenchcolors:showFrenchColors
+};
+Object.keys(info).forEach(function(k){
+  handlers[k]=function(){showInfo(k)};
+});
+
+/* ================= التشغيل ================= */
+loadState();
 updateProgress();
-</script></body></html>
+</script>
+</body>
+</html>
