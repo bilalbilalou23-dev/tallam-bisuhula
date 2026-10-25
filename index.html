@@ -1,788 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#5b52cc">
-<meta name="description" content="تعلّم بسهولة: تطبيق تعليمي تفاعلي لتلاميذ السنة الأولى ابتدائي في اللغة العربية والرياضيات والتربية العلمية والإسلامية والمدنية والفنية والفرنسية.">
-<title>تعلّم بسهولة</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8C%88%3C/text%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14532d">
+<link rel="manifest" href="./manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>تعلّم بسهولة | المدرسة الابتدائية الجزائرية</title>
 <style>
-:root{
-  --purple:#5b52cc;--purple-dark:#4a42b3;
-  --ink:#26304a;--muted:#5a6378;--bg:#f7f8ff;
-  --mint:#dff7ed;--yellow:#fff1bf;--pink:#ffe4ec;--blue:#e2edff;
-  --green:#157347;--red:#b02a3c;--line:#e4e3f6;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid #8b80f1;outline-offset:2px;border-radius:8px}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-
-header{background:linear-gradient(135deg,#6a5fe0,#8b80f1);color:#fff;padding:24px 18px 30px;border-radius:0 0 28px 28px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.brand{font-size:22px;font-weight:800}
-.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.badge{background:#ffffff2b;padding:8px 12px;border-radius:20px;font-size:12px}
-.sound-toggle{background:#ffffff2b;border:0;color:#fff;border-radius:20px;padding:8px 12px;font-size:13px;cursor:pointer}
-.sound-toggle:hover{background:#ffffff3d}
-h1{font-size:25px;margin:24px 0 8px;line-height:1.5}
-header p{margin:0;line-height:1.8;color:#f0efff}
-
-.wrap{max-width:900px;margin:auto;padding:18px}
-.section-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px}
-.section-title h2{font-size:19px;margin:0}
-.section-title small{color:var(--muted)}
-
-.progress{background:#fff;padding:15px;border-radius:18px;box-shadow:0 4px 16px #28285b0f;display:flex;align-items:center;gap:13px}
-.avatar{width:54px;height:54px;border-radius:17px;background:var(--yellow);display:grid;place-items:center;font-size:28px;flex:none}
-.progress strong{display:block;margin-bottom:6px}
-.bar{height:8px;background:#ecebfa;border-radius:10px;overflow:hidden;width:100%;margin-top:8px}
-.bar span{display:block;width:0;height:100%;background:var(--purple);border-radius:10px;transition:width .3s}
-
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:#fff;border-radius:20px;padding:16px;text-align:right;border:0;box-shadow:0 4px 16px #28285b0f;cursor:pointer;min-height:128px;color:var(--ink);font:inherit}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px #28285b1a}
-.card{transition:transform .15s,box-shadow .15s}
-.icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:25px;margin-bottom:12px}
-.card b{font-size:16px;display:block}
-.card small{display:block;color:var(--muted);margin-top:6px;line-height:1.6}
-.mint{background:var(--mint)}.yellow{background:var(--yellow)}.pink{background:var(--pink)}.blue{background:var(--blue)}
-
-.actions{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}
-.primary,.secondary,.danger{border:0;border-radius:14px;padding:13px 16px;font-weight:bold;cursor:pointer}
-.primary{background:var(--purple);color:#fff;flex:1}
-.primary:hover{background:var(--purple-dark)}
-.secondary{background:#fff;color:var(--purple-dark);border:1px solid var(--line)}
-.secondary:hover{background:#f3f2ff}
-.danger{background:#fff;color:var(--red);border:1px solid #f1c8ce}
-.danger:hover{background:#fff4f6}
-
-.panel{display:none;background:#fff;border-radius:20px;padding:18px;margin-top:16px;box-shadow:0 4px 16px #28285b0f;outline:none;scroll-margin-top:16px}
-.panel.active{display:block;animation:fadeIn .25s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.panel h2{margin-top:0}
-
-.lesson-list{display:grid;gap:10px}
-.lesson{background:#f7f7ff;padding:13px;border-radius:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.lesson button{background:var(--purple);color:#fff;border:0;border-radius:10px;padding:9px 12px;cursor:pointer}
-.lesson button:hover{background:var(--purple-dark)}
-
-.bigletter{font-size:78px;text-align:center;color:var(--purple);padding:8px;line-height:1.1}
-.trace{display:block;width:100%;height:190px;border:2px dashed #c8c4f5;border-radius:16px;touch-action:none;background:#fffdf8}
-
-.question{font-size:24px;font-weight:800;text-align:center;background:#f2f1ff;border-radius:16px;padding:18px 12px;margin:14px 0;color:var(--purple-dark);line-height:1.7;word-break:break-word}
-
-.quizopt{display:block;width:100%;margin:8px 0;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:right;cursor:pointer}
-.quizopt:hover:not(:disabled){background:#f3f2ff;border-color:#c8c4f5}
-.quizopt:disabled,.letter-btn:disabled,.number-btn:disabled{opacity:.55;cursor:not-allowed}
-.wrong-pick{background:var(--pink)!important;border-color:#f1c8ce!important}
-
-.notice{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:20px}
-.feedback{font-weight:bold;line-height:1.8;min-height:26px;margin:6px 0}
-.correct{color:var(--green)}
-.wrong{color:var(--red)}
-
-.letter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.letter-btn{border:1px solid var(--line);background:#f9f8ff;border-radius:13px;padding:12px;font-size:27px;color:var(--purple);cursor:pointer}
-.letter-btn:hover:not(:disabled){background:#efedff}
-.number-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.number-btn{border:1px solid var(--line);background:#f9f8ff;border-radius:12px;padding:12px;cursor:pointer;font-size:18px;font-weight:700;color:var(--purple-dark)}
-.number-btn:hover:not(:disabled){background:#efedff}
-.pill{border-radius:15px;background:#f7f7ff;padding:14px;margin:10px 0;line-height:1.9}
-.art-shapes{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;font-size:32px;padding:12px}
-
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,24px);background:var(--ink);color:#fff;
-  padding:13px 20px;border-radius:16px;font-weight:bold;box-shadow:0 8px 24px #26304a55;
-  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;max-width:92vw;text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-
-footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
-
-@media(min-width:650px){
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .letter-grid{grid-template-columns:repeat(7,minmax(0,1fr))}
-}
-@media(max-width:380px){
-  .letter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .number-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .top{align-items:flex-start;flex-direction:column}
-}
-@media(prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important}
-  html{scroll-behavior:auto}
-}
+:root{--green:#14532d;--green2:#166534;--mint:#dcfce7;--gold:#fbbf24;--ink:#172033;--muted:#64748b;--paper:#f6f8f5;--line:#e2e8f0;--white:#fff;--blue:#eff6ff}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}
+header{background:linear-gradient(135deg,#14532d,#15803d);color:#fff;padding:24px 18px 30px}
+.wrap{max-width:1180px;margin:auto}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:54px;height:54px;border-radius:16px;background:#fff;color:var(--green);display:grid;place-items:center;font-size:28px;font-weight:bold}
+h1{font-size:clamp(22px,4vw,34px);margin:0}header p{margin:5px 0 0;color:#dcfce7}
+.badge{border:1px solid #bbf7d0;background:#ffffff18;border-radius:999px;padding:6px 12px;font-size:13px}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:center;margin-top:24px}.hero h2{font-size:clamp(24px,4vw,38px);line-height:1.4;margin:0 0 10px}.hero p{max-width:650px}
+.hero-card{background:#fff;color:var(--ink);border-radius:20px;padding:18px;box-shadow:0 10px 30px #052e161c}.hero-card strong{color:var(--green);font-size:18px}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.stat{background:#f0fdf4;border-radius:12px;padding:10px;text-align:center}.stat b{display:block;color:var(--green);font-size:20px}
+main{padding:22px 14px 45px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:18px;box-shadow:0 4px 16px #0f172a08}
+.controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:5px;color:#334155}
+select,input{width:100%;border:1px solid #cbd5e1;border-radius:11px;padding:12px;background:#fff;font:inherit;color:var(--ink);min-width:0}
+button,.btn{border:0;border-radius:11px;padding:11px 15px;font:inherit;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.primary{background:var(--green);color:#fff}.secondary{background:var(--mint);color:var(--green)}.outline{background:#fff;border:1px solid #cbd5e1;color:#334155}.warning{background:#fff7ed;color:#9a3412}
+button:hover,.btn:hover{filter:brightness(.97)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{background:#f1f5f9;color:#334155}.tab.active{background:var(--green);color:#fff}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.section-head h2{margin:0;font-size:23px}.count{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fff;break-inside:avoid}.card h3{margin:0 0 8px;font-size:19px;color:var(--green)}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.chip{background:#f1f5f9;border-radius:999px;padding:3px 9px;font-size:12px;color:#475569}.card p{margin:8px 0}.card ul{margin:6px 0;padding-right:22px}.card .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #cbd5e1;border-radius:14px}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#854d0e;padding:13px 15px;border-radius:13px;font-size:14px}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:10px}
+.hidden{display:none!important}.quiz-q{padding:12px 0;border-bottom:1px solid var(--line)}.quiz-q label{display:block;font-weight:bold}.quiz-q button{margin:5px 4px 0 0}.correct{background:#dcfce7!important;color:#166534!important}.wrong{background:#fee2e2!important;color:#991b1b!important}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:1fr}.hero-card{max-width:none}}
+@media(max-width:420px){.controls{grid-template-columns:1fr}.topline{align-items:flex-start}.badge{display:none}}
+@media print{header,.controls,.tabs,.actions,.no-print,.footer,.note.topnote{display:none!important}body{background:#fff;font-size:12pt}.wrap{max-width:none}.panel{border:0;box-shadow:none;padding:0}.card{border:1px solid #aaa;margin-bottom:10px}.cards{display:block}.card h3{color:#000}.print-title{display:block!important}main{padding:0}}
+.print-title{display:none}
 </style>
 </head>
 <body>
 <header>
-  <div class="top">
-    <div class="brand"><span aria-hidden="true">🌈</span> تعلّم بسهولة</div>
-    <div class="top-actions">
-      <button type="button" id="soundBtn" class="sound-toggle" onclick="toggleSound()" aria-pressed="true">🔊 الصوت</button>
-      <div class="badge">السنة الأولى ابتدائي</div>
-    </div>
+ <div class="wrap">
+  <div class="topline">
+   <div class="brand"><div class="logo">ت</div><div><h1>تعلّم بسهولة</h1><p>مكتبة تربوية للمدرسة الابتدائية الجزائرية</p></div></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button class="badge" id="installBtn" style="color:#fff;cursor:pointer">⬇ تثبيت التطبيق</button><span class="badge">نسخة مطوّرة • تعمل دون إنترنت بعد الإعداد</span></div>
   </div>
-  <h1>مرحبًا يا بطل! ⭐<br>هيا نتعلّم شيئًا جديدًا</h1>
-  <p>دروس وأنشطة وتمارين بسيطة وممتعة.</p>
+  <div class="hero">
+   <div><h2>كل ما تحتاجه للتعلّم والتحضير<br>في مكان واحد.</h2><p>ملخصات، تمارين، نماذج فروض واختبارات، بطاقات مذكرات، وقسم لتنظيم الوثائق الوزارية حسب المستوى والمادة.</p></div>
+   <div class="hero-card"><strong>ابدأ باختيار المستوى والمادة</strong><div class="statrow"><div class="stat"><b>5</b><span>مستويات</span></div><div class="stat"><b>7</b><span>مجالات دراسية</span></div><div class="stat"><b>PDF</b><span>طباعة وحفظ</span></div></div><p style="font-size:13px;color:#64748b;margin-bottom:0">يمكنك حفظ أي بطاقة بصيغة PDF عبر زر «طباعة / حفظ PDF».</p></div>
+  </div>
+ </div>
 </header>
-
 <main class="wrap">
-  <div class="progress">
-    <div class="avatar" aria-hidden="true">🧒</div>
-    <div style="flex:1">
-      <strong>رحلتك التعليمية</strong>
-      <small id="progressText" style="color:var(--muted)">أنجز أول نشاط لتحصل على نقاط!</small>
-      <div class="bar"><span id="progressBar"></span></div>
-      <small id="pointsText">⭐ النقاط: 0</small>
-    </div>
+ <div class="panel">
+  <div class="section-head"><h2>🔎 البحث والتصفية</h2><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="favoritesOnly">♥ المفضلة فقط</button><button class="outline" id="reset">إعادة ضبط</button></div></div>
+  <div class="controls" style="margin-top:12px">
+   <div class="field"><label for="grade">المستوى</label><select id="grade"><option value="all">كل المستويات</option><option value="1">السنة الأولى ابتدائي</option><option value="2">السنة الثانية ابتدائي</option><option value="3">السنة الثالثة ابتدائي</option><option value="4">السنة الرابعة ابتدائي</option><option value="5">السنة الخامسة ابتدائي</option></select></div>
+   <div class="field"><label for="subject">المادة</label><select id="subject"><option value="all">كل المواد</option><option>اللغة العربية</option><option>الرياضيات</option><option>التربية الإسلامية</option><option>التربية المدنية</option><option>التربية العلمية والتكنولوجية</option><option>التربية الفنية</option><option>اللغة الفرنسية</option><option>التاريخ والجغرافيا</option></select></div>
+   <div class="field"><label for="kind">نوع المحتوى</label><select id="kind"><option value="all">كل الأنواع</option><option value="summary">ملخص درس</option><option value="exercise">تمارين</option><option value="test">فرض / اختبار</option><option value="plan">مذكرة درس</option><option value="model">نموذج تحضير</option><option value="official">وثائق وزارية</option></select></div>
+   <div class="field"><label for="search">كلمات البحث</label><input id="search" placeholder="مثال: الجمع، الحروف، النظافة…"></div>
   </div>
-
-  <div class="section-title"><h2>ماذا تريد أن تتعلّم؟</h2><small>اختر مادة</small></div>
-
-  <div class="grid">
-    <button type="button" class="card" onclick="openSubject('arabic')"><span class="icon mint" aria-hidden="true">🔤</span><b>اللغة العربية</b><small>الحروف والكلمات والكتابة</small></button>
-    <button type="button" class="card" onclick="openSubject('math')"><span class="icon yellow" aria-hidden="true">🔢</span><b>الرياضيات</b><small>الأعداد والعدّ والعمليات</small></button>
-    <button type="button" class="card" onclick="openSubject('science')"><span class="icon blue" aria-hidden="true">🌱</span><b>التربية العلمية</b><small>الإنسان والحيوان والنبات</small></button>
-    <button type="button" class="card" onclick="openSubject('islamic')"><span class="icon pink" aria-hidden="true">🌙</span><b>التربية الإسلامية</b><small>القيم والسلوك الحسن</small></button>
-    <button type="button" class="card" onclick="openSubject('civic')"><span class="icon yellow" aria-hidden="true">🤝</span><b>التربية المدنية</b><small>التعاون والسلامة</small></button>
-    <button type="button" class="card" onclick="openSubject('art')"><span class="icon mint" aria-hidden="true">🎨</span><b>التربية الفنية</b><small>الألوان والأشكال والرسم</small></button>
-    <button type="button" class="card" onclick="openSubject('french')"><span class="icon blue" aria-hidden="true">🇫🇷</span><b>اللغة الفرنسية</b><small>الحروف والكلمات الأساسية</small></button>
+  <div class="tabs" id="quickTabs"><button class="tab active" data-kind="all">الكل</button><button class="tab" data-kind="summary">الملخصات</button><button class="tab" data-kind="exercise">التمارين</button><button class="tab" data-kind="test">الفروض والاختبارات</button><button class="tab" data-kind="plan">المذكرات</button><button class="tab" data-kind="model">النماذج</button><button class="tab" data-kind="official">الوثائق الوزارية</button></div>
+ </div>
+ <div class="note topnote"><b>تنبيه مهم:</b> هذه نسخة تطبيق تعليمية أولية تتضمن نماذج قابلة للتعديل. لا تُعدّ مكتبة كاملة أو نسخة رسمية من المنهاج الجزائري، ولا تُنسب الوثائق الوزارية إلى الوزارة إلا بعد إضافة ملفاتها الأصلية والتحقق من مصدرها وسنتها.</div>
+ <section class="panel" id="resultsPanel">
+  <div class="section-head"><h2 id="resultsTitle">المحتويات التعليمية</h2><span id="resultCount" class="count"></span></div>
+  <h2 class="print-title" id="printTitle"></h2>
+  <div id="results" class="cards" style="margin-top:14px"></div>
+ </section>
+ <section class="panel">
+  <div class="section-head"><h2>📝 اختبار سريع</h2><span class="count">أسئلة تدريبية نموذجية</span></div>
+  <div id="quiz">
+   <div class="quiz-q" data-answer="ب"><label>1) ما ناتج 7 + 5 ؟</label><button class="outline" data-choice="أ">11</button><button class="outline" data-choice="ب">12</button><button class="outline" data-choice="ج">13</button></div>
+   <div class="quiz-q" data-answer="أ"><label>2) أي كلمة تبدأ بحرف «س»؟</label><button class="outline" data-choice="أ">سمكة</button><button class="outline" data-choice="ب">قلم</button><button class="outline" data-choice="ج">باب</button></div>
+   <div class="quiz-q" data-answer="ج"><label>3) أي سلوك يحافظ على نظافة المدرسة؟</label><button class="outline" data-choice="أ">رمي الأوراق أرضًا</button><button class="outline" data-choice="ب">الكتابة على الجدران</button><button class="outline" data-choice="ج">رمي النفايات في السلة</button></div>
   </div>
-
-  <div class="actions">
-    <button type="button" class="primary" onclick="openSubject('arabic')">ابدأ التعلّم ←</button>
-    <button type="button" class="secondary" onclick="showQuiz()">اختبر نفسك ✨</button>
-    <button type="button" class="secondary" onclick="showProgress()">إنجازاتي 🏆</button>
-  </div>
-
-  <section id="panel" class="panel" tabindex="-1"></section>
-
-  <p class="notice">هذه نسخة تعليمية تجريبية بأنشطة مبسطة. راجع توافق الدروس مع المنهاج الرسمي المعتمد في المدرسة؛ فهي ليست بديلًا عن الكتاب المدرسي. يُستخدم صوت المتصفح لنطق الحروف والكلمات عند توفّره.</p>
+  <div class="actions"><button class="primary" id="checkQuiz">تصحيح الإجابات</button><button class="secondary" id="resetQuiz">إعادة الاختبار</button><strong id="quizScore" aria-live="polite"></strong></div>
+ </section>
+ <section class="panel">
+  <div class="section-head"><h2>📁 قسم الوثائق الوزارية</h2></div>
+  <p>أضف هنا ملفات PDF الرسمية بحسب السنة الدراسية والمستوى والمادة، مع اسم الوثيقة وتاريخها ورابط المصدر الرسمي. لا تُعرض في النسخة الحالية ملفات وزارية غير موثّقة.</p>
+  <div class="note">اقتراح لتنظيم المكتبة: <b>السنة الدراسية ← المستوى ← المادة ← نوع الوثيقة</b>، مع حقول لرقم المنشور وتاريخه ورابط المصدر.</div>
+ </section>
+ <div class="footer">تعلّم بسهولة — نموذج أولي محلي. المحتويات قابلة للتوسيع والتحديث وفق المنهاج والوثائق الرسمية المعتمدة في الجزائر.</div>
 </main>
-
-<footer>صُنع بحبّ من أجل التعلّم 💜</footer>
-
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-
 <script>
-/* ================= البيانات ================= */
-const letters=[['ا','أسد'],['ب','بطة'],['ت','تفاحة'],['ث','ثعلب'],['ج','جمل'],['ح','حصان'],['خ','خبز'],['د','دجاجة'],['ذ','ذرة'],['ر','رمان'],['ز','زهرة'],['س','سمكة'],['ش','شمس'],['ص','صقر'],['ض','ضفدع'],['ط','طائرة'],['ظ','ظرف'],['ع','عنب'],['غ','غيمة'],['ف','فراشة'],['ق','قلم'],['ك','كتاب'],['ل','ليمون'],['م','موز'],['ن','نحلة'],['ه','هلال'],['و','وردة'],['ي','يد']];
-
-const data={
-  arabic:{title:'اللغة العربية',intro:'تعلّم الحروف والكلمات وتدرّب على الكتابة.',lessons:[['حروف الهجاء','letters'],['التدريب على الكتابة','writing'],['كلمات قصيرة','words'],['اختبار الحروف','arabicquiz']]},
-  math:{title:'الرياضيات',intro:'تدرّب على الأعداد والعدّ والجمع والطرح.',lessons:[['الأعداد من 0 إلى 20','numbers'],['العدّ','count'],['الجمع','add'],['الطرح','subtract']]},
-  science:{title:'التربية العلمية',intro:'اكتشف جسم الإنسان والحيوانات والنباتات.',lessons:[['أجزاء الجسم','body'],['الحيوانات','animals'],['النباتات','plants'],['النظافة والصحة','hygiene']]},
-  islamic:{title:'التربية الإسلامية',intro:'نتعلّم قيمًا وسلوكيات حسنة بطريقة مبسطة.',lessons:[['الصدق والأمانة','honesty'],['النظافة','cleanliness'],['احترام الوالدين','parents'],['السلام والتحية','greeting']]},
-  civic:{title:'التربية المدنية',intro:'نتعلّم التعاون واحترام القواعد والسلامة.',lessons:[['التعاون في القسم','teamwork'],['احترام الآخرين','respect'],['السلامة في الطريق','road'],['المحافظة على البيئة','environment']]},
-  art:{title:'التربية الفنية',intro:'تعرّف إلى الألوان والأشكال وجرّب الرسم.',lessons:[['الألوان','colors'],['الأشكال','shapes'],['ارسم بإصبعك','drawing']]},
-  french:{title:'اللغة الفرنسية',intro:'بداية بسيطة مع الحروف والكلمات الفرنسية.',lessons:[['الحروف A B C','frenchletters'],['كلمات سهلة','frenchwords'],['الألوان بالفرنسية','frenchcolors']]}
-};
-
-const info={
-  body:['أجزاء الجسم','👀 👃 👄 ✋','نستعمل العينين للرؤية، والأذنين للسمع، والأنف للشم، واليدين للمس والإمساك بالأشياء.'],
-  animals:['الحيوانات','🐈 🐄 🐦 🐟','توجد حيوانات تعيش في البيت وأخرى في المزرعة أو البرية. تحتاج الحيوانات إلى الغذاء والماء والمأوى.'],
-  plants:['النباتات','🌱 🌿 🌻','تحتاج النباتات إلى الماء والضوء والهواء لتنمو، وتساعدنا في الحصول على الغذاء والظل.'],
-  hygiene:['النظافة والصحة','🧼 🚿 🪥','نغسل أيدينا بالماء والصابون، وننظف أسناننا، ونحافظ على نظافة ملابسنا ومحيطنا.'],
-  honesty:['الصدق والأمانة','🤝 ⭐','الصدق هو قول الحقيقة، والأمانة هي المحافظة على ما اؤتمنّا عليه وإرجاع الأشياء إلى أصحابها.'],
-  cleanliness:['النظافة','🧼 💧','النظافة تحافظ على صحتنا. نغسل اليدين قبل الطعام وبعد استعمال المرحاض.'],
-  parents:['احترام الوالدين','❤️ 👨‍👩‍👧','نتحدث مع الوالدين بأدب، ونساعدهما بما نستطيع، ونستمع إلى نصائحهما.'],
-  greeting:['السلام والتحية','👋 😊','نحيّي الآخرين بلطف، ونردّ التحية، ونستعمل كلمات مثل: السلام عليكم، صباح الخير، وشكرًا.'],
-  teamwork:['التعاون في القسم','🧑‍🤝‍🧑 🏫','نتعاون في ترتيب القسم، ونتقاسم الأدوات، ونساعد زملاءنا باحترام.'],
-  respect:['احترام الآخرين','💛 🤝','نستمع عندما يتحدث الآخرون، ولا نسخر من أحد، ونحترم الناس.'],
-  road:['السلامة في الطريق','🚦 🚸','نعبر من ممر المشاة مع شخص بالغ عند الحاجة، وننظر إلى الجهتين، ونتبع إشارات المرور.'],
-  environment:['المحافظة على البيئة','🌳 ♻️','نضع النفايات في سلة المهملات، ونحافظ على الأشجار والماء، ولا نؤذي الحيوانات.']
-};
-
-const questions=[
-  {q:'ما الحرف الأول في كلمة «أسد»؟',opts:['ب','أ','م'],a:1},
-  {q:'كم يساوي 2 + 3؟',opts:['4','5','6'],a:1},
-  {q:'ماذا تحتاج النبتة لتنمو؟',opts:['الماء','الألعاب فقط','الحجارة فقط'],a:0},
-  {q:'ماذا نقول عندما يساعدنا أحد؟',opts:['شكرًا','لا شيء','ابتعد'],a:0},
-  {q:'ما لون العشب غالبًا؟',opts:['أخضر','وردي','بنفسجي'],a:0}
+const materials = [
+{grade:1,subject:"اللغة العربية",kind:"summary",title:"الحروف العربية: التعرّف والكتابة",period:"نموذج تأسيسي",body:"أتعرف شكل الحرف وصوته، وأميّزه في أول الكلمة ووسطها وآخرها بحسب موضعه.",points:["ألاحظ الحرف وأردّد صوته.","أتتبّع الحرف المنقّط ثم أكتبه.","أبحث عن كلمات تحتوي الحرف."],activity:"تتبّع الحرف بالقلم، ثم كتابة ثلاث كلمات تبدأ به."},
+{grade:1,subject:"الرياضيات",kind:"summary",title:"الأعداد والعدّ",period:"نموذج تأسيسي",body:"أعدّ الأشياء واحدًا واحدًا، وأربط كل مجموعة بالعدد المناسب لها.",points:["أعدّ من 1 إلى 10.","أقارن مجموعتين باستعمال: أكثر، أقل، يساوي.","أكتب العدد وأمثّله بالأشياء."],activity:"ارسم 6 دوائر، ثم اكتب العدد المناسب."},
+{grade:1,subject:"التربية الإسلامية",kind:"plan",title:"آداب التحية",period:"بطاقة مذكرة قابلة للتعديل",body:"الكفاءة المستهدفة: استعمال التحية الطيبة في المواقف اليومية.",points:["وضعية الانطلاق: كيف نحيّي زملاءنا؟","بناء التعلمات: الاستماع إلى حوار قصير وتمثيله.","استثمار: تمثيل موقف دخول القسم."],activity:"التقويم: يختار المتعلم التحية المناسبة لموقف معطى."},
+{grade:1,subject:"التربية المدنية",kind:"summary",title:"قواعد القسم",period:"نموذج",body:"القسم مكان للتعلم والتعاون، ولكل متعلم حق في التعلم وواجب في احترام الآخرين.",points:["أستمع عندما يتحدث غيري.","أحافظ على الأدوات والممتلكات.","ألتزم بالنظام وأطلب الإذن."],activity:"اذكر قاعدتين تساعدان على التعلم في هدوء."},
+{grade:1,subject:"التربية العلمية والتكنولوجية",kind:"exercise",title:"الحواس الخمس",period:"تمارين تدريبية",body:"أربط كل حاسة بعضوها وبمثال مناسب.",points:["البصر — العين — رؤية الألوان.","السمع — الأذن — سماع الأصوات.","الشم — الأنف؛ الذوق — اللسان؛ اللمس — الجلد."],activity:"أكمل: أستعمل ______ لأسمع صوت الجرس."},
+{grade:1,subject:"اللغة الفرنسية",kind:"summary",title:"Saluer et se présenter",period:"نموذج تمهيدي",body:"Bonjour ! Je m’appelle … Comment tu t’appelles ?",points:["أستمع إلى التحية وأكررها.","أقدّم اسمي بجملة قصيرة.","أحترم دور المتحدث."],activity:"أكمل: Bonjour, je m’appelle ______."},
+{grade:1,subject:"الرياضيات",kind:"test",title:"نموذج تقويم قصير في الرياضيات",period:"نموذج غير رسمي",body:"1) اكتب العدد الذي يأتي بعد 4. 2) احسب 3 + 2 باستعمال الرسم. 3) ضع الإشارة المناسبة: 5 __ 2.",points:["التمرين الأول: ____","التمرين الثاني: ____","التمرين الثالث: ____"],activity:"التصحيح المقترح: 5؛ 5؛ >."},
+{grade:1,subject:"اللغة العربية",kind:"plan",title:"مذكرة درس: حرف (س)",period:"قالب قابل للتكييف",body:"المستوى: السنة الأولى ابتدائي. عنوان الدرس: حرف س. المدة والكفاءة والوسائل تُستكمل وفق التدرج المعتمد.",points:["التمهيد: عرض صور لأشياء تبدأ بحرف س.","الاكتشاف: نطق الصوت وملاحظة شكل الحرف.","التدريب: قراءة وكتابة الحرف في مواضعه.","الإدماج: اختيار كلمات تحتوي الحرف."],activity:"تقويم: يتعرف المتعلم الحرف ويكتبه وفق النموذج."},
+{grade:2,subject:"اللغة العربية",kind:"summary",title:"الجملة الاسمية والفعلية",period:"مراجعة نموذجية",body:"الجملة كلام يفيد معنى. تبدأ الجملة الاسمية باسم، وتبدأ الجملة الفعلية بفعل.",points:["الحديقة جميلة: جملة اسمية.","كتب التلميذ: جملة فعلية.","أقرأ الجملة وألاحظ الكلمة الأولى."],activity:"صنّف: «الولد نشيط» و«رسمت سلمى»."},
+{grade:2,subject:"الرياضيات",kind:"exercise",title:"الجمع والطرح",period:"تمارين تدريبية",body:"أحسب العمليات مع تنظيم الأعداد حسب المنازل عندما يلزم.",points:["24 + 13 = ____","38 − 15 = ____","معي 12 قلمًا وأعطيت 4 أقلام. كم بقي؟"],activity:"التصحيح: 37؛ 23؛ 8 أقلام."},
+{grade:2,subject:"التربية الإسلامية",kind:"plan",title:"مذكرة: الصدق والأمانة",period:"بطاقة تحضير",body:"الكفاءة المستهدفة: إدراك قيمة الصدق والأمانة وتمثّلها في السلوك اليومي.",points:["وضعية مشكلة من الحياة المدرسية.","مناقشة آثار الصدق والأمانة.","استخلاص السلوك الصحيح.","تقويم بموقف قصير."],activity:"يذكر المتعلم مثالًا على الأمانة في المدرسة."},
+{grade:2,subject:"التربية العلمية والتكنولوجية",kind:"summary",title:"النبات وحاجاته",period:"نموذج",body:"يحتاج النبات إلى الماء والهواء والضوء ووسط مناسب للنمو.",points:["ألاحظ نبتة سليمة.","أقارنها بنبتة لا تُسقى.","أستنتج أهمية العناية بالنبات."],activity:"اقترح تجربة بسيطة لملاحظة أثر الماء في النبات."},
+{grade:2,subject:"اللغة الفرنسية",kind:"exercise",title:"Les couleurs",period:"تمرين",body:"Relie chaque mot à la bonne couleur.",points:["rouge","bleu","vert","jaune"],activity:"اكتب اسم لون تحبه في جملة قصيرة."},
+{grade:2,subject:"اللغة العربية",kind:"test",title:"نموذج فرض في اللغة العربية",period:"نموذج غير رسمي",body:"اقرأ نصًا قصيرًا مناسبًا للمستوى، ثم أجب عن أسئلة الفهم، واستخرج كلمة، وأكمل جملة، واكتب جملة مفيدة.",points:["فهم المكتوب: 4 نقاط.","لغة: 3 نقاط.","إنتاج كتابي: 3 نقاط."],activity:"يجب اختيار النص والأسئلة وفق الدروس المنجزة فعليًا."},
+{grade:3,subject:"الرياضيات",kind:"summary",title:"الضرب بوصفه جمعًا متكررًا",period:"مراجعة نموذجية",body:"الضرب طريقة مختصرة لجمع العدد نفسه عدة مرات.",points:["3 × 4 تعني 4 + 4 + 4.","أستعمل مجموعات متساوية للتمثيل.","أتحقق من الناتج بالجمع المتكرر."],activity:"مثّل 2 × 5 بالرسم ثم اكتب الجمع المتكرر."},
+{grade:3,subject:"اللغة العربية",kind:"plan",title:"مذكرة: فهم نص مقروء",period:"قالب تحضير",body:"الكفاءة المستهدفة: قراءة نص مناسب وفهم فكرته العامة وتحديد معلومات صريحة.",points:["قبل القراءة: ملاحظة العنوان والصورة.","أثناء القراءة: قراءة نموذجية ثم فردية.","بعد القراءة: أسئلة الفهم وشرح المفردات.","إنتاج: كتابة جملة حول الفكرة."],activity:"يعدّل الأستاذ الأسئلة بحسب النص المعتمد."},
+{grade:3,subject:"التربية المدنية",kind:"summary",title:"التعاون والمسؤولية",period:"نموذج",body:"يساعد التعاون على إنجاز الأعمال واحترام الآخرين وتحمل المسؤولية.",points:["أشارك في العمل الجماعي.","أحافظ على دوري وأدواتي.","أساعد زميلي دون إزعاج القسم."],activity:"اكتب مثالًا عن عمل تعاوني داخل المدرسة."},
+{grade:3,subject:"التربية العلمية والتكنولوجية",kind:"test",title:"تقويم حول الكائنات الحية",period:"نموذج غير رسمي",body:"صنّف أمثلة إلى كائنات حية وغير حية، واذكر حاجتين للكائنات الحية، ثم فسّر إجابتك.",points:["التصنيف: ____","الحاجات: ____","التفسير: ____"],activity:"تُضبط الأمثلة والعلامة حسب الوحدة المدروسة."},
+{grade:3,subject:"الرياضيات",kind:"test",title:"نموذج اختبار قصير في الرياضيات",period:"نموذج غير رسمي",body:"التمرين 1: رتّب الأعداد تصاعديًا. التمرين 2: أنجز عملية جمع أو طرح. التمرين 3: مسألة قصيرة من الحياة اليومية.",points:["الأعداد: ____","العملية: ____","المسألة: ____"],activity:"يستبدل الأستاذ الأعداد بما يناسب المكتسبات المنجزة."},
+{grade:4,subject:"الرياضيات",kind:"summary",title:"الكسور البسيطة",period:"مراجعة نموذجية",body:"يمثل الكسر أجزاء متساوية من كلّ؛ المقام يبيّن عدد الأجزاء المتساوية والبسط عدد الأجزاء المأخوذة.",points:["أقسم شكلاً إلى أجزاء متساوية.","أظلل الجزء المطلوب.","أكتب الكسر الذي يمثّل الأجزاء المظللة."],activity:"ارسم مستطيلاً وقسّمه إلى 4 أجزاء متساوية وظلّل جزءًا."},
+{grade:4,subject:"اللغة العربية",kind:"exercise",title:"التعبير الكتابي: وصف مكان",period:"نشاط تدريبي",body:"اكتب فقرة قصيرة تصف فيها مكانًا تحبه، مستعملًا جملًا مترابطة وصفات مناسبة.",points:["أحدد المكان.","أذكر ما يميّزه.","أرتب الأفكار وأراجع علامات الوقف."],activity:"اكتب من 5 إلى 7 جمل وفق توجيهات الأستاذ."},
+{grade:4,subject:"التاريخ والجغرافيا",kind:"model",title:"نموذج بطاقة نشاط في التاريخ والجغرافيا",period:"قالب قابل للتعبئة",body:"عنوان النشاط: ______. المفاهيم الأساسية: ______. الوثيقة أو الخريطة المستعملة: ______.",points:["ألاحظ الوثيقة.","أستخرج المعلومات.","أحدد المكان أو التسلسل الزمني عند الحاجة.","أكتب خلاصة قصيرة."],activity:"تُملأ البطاقة انطلاقًا من الدرس والوثيقة المعتمدين."},
+{grade:4,subject:"التربية الإسلامية",kind:"summary",title:"القيم والسلوك الحسن",period:"مراجعة عامة",body:"تظهر القيم الإسلامية في السلوك اليومي مثل الصدق والرفق واحترام الوالدين ومساعدة الآخرين.",points:["أحدد السلوك الحسن في موقف.","أشرح أثره في الأسرة والمدرسة.","أقترح تطبيقًا عمليًا."],activity:"اكتب موقفًا تطبّق فيه قيمة التعاون."},
+{grade:4,subject:"اللغة الفرنسية",kind:"summary",title:"Lire et produire un court paragraphe",period:"نموذج",body:"Un paragraphe contient des phrases liées autour d'une idée principale.",points:["Je lis la consigne.","Je cherche les mots utiles.","J'organise mes phrases.","Je relis et corrige."],activity:"Écris quelques phrases sur ton école."},
+{grade:5,subject:"اللغة العربية",kind:"summary",title:"بناء فقرة مترابطة",period:"مراجعة وتحضير",body:"الفقرة الجيدة تتناول فكرة واضحة، وترتب الجمل ترتيبًا منطقيًا، وتستخدم أدوات الربط وعلامات الوقف.",points:["أفهم الموضوع والمطلوب.","أجمع الأفكار وأرتبها.","أكتب مقدمة وعرضًا وخاتمة عند الحاجة.","أراجع الإملاء والترقيم."],activity:"اكتب فقرة حول المحافظة على البيئة المدرسية."},
+{grade:5,subject:"الرياضيات",kind:"exercise",title:"حل مسألة متعددة الخطوات",period:"تدريب",body:"أقرأ المسألة، أحدد المعطيات والمطلوب، أختار العمليات، ثم أتحقق من معقولية النتيجة.",points:["المعطيات: ____","المطلوب: ____","العمليات: ____","الجواب بجملة: ____"],activity:"أنشئ مسألة من الحياة اليومية تتطلب عمليتين."},
+{grade:5,subject:"التربية العلمية والتكنولوجية",kind:"summary",title:"اتباع خطوات الاستقصاء العلمي",period:"مراجعة نموذجية",body:"أطرح سؤالًا، أقترح تفسيرًا، ألاحظ أو أجرب بطريقة آمنة، أسجل النتائج ثم أستنتج.",points:["السؤال أو المشكلة.","الفرضية.","الملاحظة أو التجربة.","النتيجة والاستنتاج."],activity:"اكتب سؤالًا علميًا يمكن التحقق منه بملاحظة بسيطة."},
+{grade:5,subject:"التربية المدنية",kind:"test",title:"نموذج فرض في التربية المدنية",period:"نموذج غير رسمي",body:"اقرأ وضعية تتعلق بحقوق الطفل وواجباته أو الحياة الجماعية، ثم استخرج المشكلة واقترح حلًا مسؤولًا.",points:["فهم الوضعية: ____","تحديد الحق أو الواجب: ____","اقتراح الحل: ____"],activity:"يكيّف الأستاذ الوضعية مع الدروس التي تم تناولها."},
+{grade:5,subject:"اللغة العربية",kind:"test",title:"قالب اختبار في اللغة العربية",period:"نموذج قابل للتكييف",body:"يتكون الاختبار عادة من نص وأسئلة فهم، وأسئلة لغة، ووضعية إدماجية، وفق التنظيم المعتمد للمستوى والفترة.",points:["النص والأسئلة: تُضاف هنا.","اللغة: تُضاف الأسئلة المنجزة.","الإنتاج الكتابي: تُدرج التعليمة ومعايير التقويم."],activity:"لا يُعدّ هذا القالب اختبارًا وزاريًا أو رسميًا."},
+{grade:1,subject:"كل المواد",kind:"model",title:"قالب مذكرة يومية فارغ",period:"قابل للطباعة",body:"المؤسسة: ______ | الأستاذ: ______ | المستوى: ______ | التاريخ: ______",points:["المادة: ______","المقطع / الميدان: ______","عنوان التعلم: ______","الكفاءة المستهدفة: ______","الوسائل: ______","سير الحصة: وضعية الانطلاق — بناء التعلمات — الاستثمار."],activity:"التقويم والمعالجة: ______"},
+{grade:2,subject:"كل المواد",kind:"model",title:"قالب فرض أو اختبار",period:"قابل للطباعة",body:"الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية الوطنية (يُستخدم هذا العنوان فقط في الوثائق التي يعدّها المستخدم رسميًا وبما يوافق قواعد مؤسسته).",points:["المؤسسة: ______","المستوى والقسم: ______","المادة والفترة: ______","التمرين الأول: ______","التمرين الثاني: ______","الوضعية الإدماجية: ______"],activity:"العلامة والتصحيح: ______"},
+{grade:3,subject:"كل المواد",kind:"official",title:"سجل الوثائق الوزارية — السنة الثالثة",period:"فهرس فارغ",body:"لا توجد وثيقة رسمية مرفقة في هذه النسخة. استخدم هذا السجل لإضافة بيانات الوثيقة بعد الحصول عليها من مصدر رسمي.",points:["اسم الوثيقة: ______","رقمها وتاريخها: ______","السنة الدراسية: ______","المستويات والمواد المعنية: ______","رابط المصدر الرسمي: ______"],activity:"أرفق الملف الأصلي ولا تكتفِ بعنوان منقول."},
+{grade:4,subject:"كل المواد",kind:"official",title:"سجل الوثائق الوزارية — السنة الرابعة",period:"فهرس فارغ",body:"مساحة لتنظيم المناشير والمراسلات والتدرجات السنوية الرسمية بعد التحقق من صحتها.",points:["عنوان الوثيقة: ______","جهة الإصدار: ______","تاريخ الإصدار: ______","رابط المصدر: ______"],activity:"تأكد من أن الوثيقة تخص السنة الدراسية والمستوى المطلوبين."},
+{grade:5,subject:"كل المواد",kind:"official",title:"سجل الوثائق الوزارية — السنة الخامسة",period:"فهرس فارغ",body:"مساحة لحفظ الوثائق الرسمية ذات الصلة بالسنة الخامسة والامتحانات، بعد التحقق من مصدرها وتاريخها.",points:["اسم الوثيقة: ______","التاريخ ورقم المرجع: ______","موضوعها: ______","رابط رسمي: ______"],activity:"لا تستخدم نماذج غير رسمية على أنها مواضيع رسمية."}
 ];
+const kindNames={summary:"ملخص درس",exercise:"تمارين",test:"فرض / اختبار",plan:"مذكرة درس",model:"نموذج تحضير",official:"وثائق وزارية"};
+const gradeNames={1:"السنة الأولى ابتدائي",2:"السنة الثانية ابتدائي",3:"السنة الثالثة ابتدائي",4:"السنة الرابعة ابتدائي",5:"السنة الخامسة ابتدائي"};
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function render(){
+ const g=$("grade").value, sub=$("subject").value, k=$("kind").value, q=$("search").value.trim().toLowerCase(); const favOnly=$("favoritesOnly").dataset.active==="1";
+ const filtered=materials.filter(m=>(g==="all"||String(m.grade)===g)&&(sub==="all"||m.subject===sub||m.subject==="كل المواد")&&(k==="all"||m.kind===k)&&(!q||(m.title+" "+m.body+" "+m.subject+" "+m.points.join(" ")).toLowerCase().includes(q))&&(!favOnly||isFavorite(materials.indexOf(m))));
+ $("resultCount").textContent=`${filtered.length} عنصر`;
+ $("resultsTitle").textContent=(g==="all"?"المحتويات التعليمية":gradeNames[g])+(k==="all"?"":" — "+kindNames[k]);
+ $("printTitle").textContent=$("resultsTitle").textContent;
+ $("results").innerHTML=filtered.length?filtered.map((m,i)=>`<article class="card"><div class="meta"><span class="chip">${esc(gradeNames[m.grade])}</span><span class="chip">${esc(m.subject)}</span><span class="chip">${esc(kindNames[m.kind])}</span></div><h3>${esc(m.title)}</h3><div class="count">${esc(m.period)}</div><p>${esc(m.body)}</p><ul>${m.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul><p><b>نشاط / تقويم:</b> ${esc(m.activity)}</p><div class="actions no-print"><button class="secondary" onclick="printCard(${materials.indexOf(m)})">طباعة / حفظ PDF</button><button class="outline" onclick="copyCard(${materials.indexOf(m)})">نسخ النص</button><button class="outline" onclick="toggleFavorite(${materials.indexOf(m)})">${isFavorite(materials.indexOf(m))?"♥ محفوظة":"♡ أضف للمفضلة"}</button></div></article>`).join(""):`<div class="empty">لا توجد نتائج مطابقة. جرّب تغيير المستوى أو المادة أو كلمات البحث.</div>`;
+}
+function printCard(i){const m=materials[i];const w=window.open("","_blank");if(!w){alert("اسمح بفتح النوافذ المنبثقة لطباعة البطاقة.");return;}w.document.write(`<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>${esc(m.title)}</title><style>body{font-family:Tahoma,Arial,sans-serif;line-height:1.9;padding:28px;color:#111}h1{font-size:23px;border-bottom:2px solid #333;padding-bottom:10px}.meta{color:#444;font-size:14px}li{margin:5px 0}.box{border:1px solid #bbb;border-radius:8px;padding:14px;margin:14px 0}@media print{button{display:none}}</style></head><body><h1>${esc(m.title)}</h1><p class="meta">${esc(gradeNames[m.grade])} | ${esc(m.subject)} | ${esc(kindNames[m.kind])} | ${esc(m.period)}</p><div class="box"><b>ملخص / وصف:</b><p>${esc(m.body)}</p></div><h3>العناصر الأساسية</h3><ul>${m.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul><div class="box"><b>نشاط / تقويم:</b><p>${esc(m.activity)}</p></div><p style="margin-top:40px;font-size:12px;color:#555">مادة تعليمية نموذجية قابلة للتعديل، وليست وثيقة وزارية رسمية.</p><button onclick="window.print()">طباعة / حفظ PDF</button><script>window.onload=()=>setTimeout(()=>window.print(),350)<\/script></body></html>`);w.document.close();}
+async function copyCard(i){const m=materials[i];const t=`${m.title}\n${gradeNames[m.grade]} — ${m.subject} — ${kindNames[m.kind]}\n\n${m.body}\n\n${m.points.map(x:"• "+x).join("\n")}\n\nنشاط/تقويم: ${m.activity}`;try{await navigator.clipboard.writeText(t);alert("تم نسخ البطاقة.");}catch(e){prompt("انسخ النص:",t)}}
+["grade","subject","kind","search"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+$("favoritesOnly").dataset.active="0"; $("favoritesOnly").addEventListener("click",()=>{$("favoritesOnly").dataset.active=$("favoritesOnly").dataset.active==="1"?"0":"1";$("favoritesOnly").classList.toggle("primary",$("favoritesOnly").dataset.active==="1");render();});
+$("reset").addEventListener("click",()=>{$("favoritesOnly").dataset.active="0";$("favoritesOnly").classList.remove("primary");$("grade").value="all";$("subject").value="all";$("kind").value="all";$("search").value="";document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.kind==="all"));render();});
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{$("kind").value=b.dataset.kind;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));render();}));
+$("checkQuiz").addEventListener("click",()=>{let score=0;document.querySelectorAll(".quiz-q").forEach(q=>{let picked=q.querySelector("button.picked");q.querySelectorAll("button").forEach(b=>b.classList.remove("correct","wrong"));if(picked){if(picked.dataset.choice===q.dataset.answer){score++;picked.classList.add("correct")}else{picked.classList.add("wrong");q.querySelector(`[data-choice="${q.dataset.answer}"]`).classList.add("correct")}}});$("quizScore").textContent=`النتيجة: ${score} من 3`;});
+document.querySelectorAll(".quiz-q button").forEach(b=>b.addEventListener("click",()=>{b.parentElement.querySelectorAll("button").forEach(x=>x.classList.remove("picked"));b.classList.add("picked")}));
+$("resetQuiz").addEventListener("click",()=>{document.querySelectorAll(".quiz-q button").forEach(b=>b.classList.remove("picked","correct","wrong"));$("quizScore").textContent="";});
 
-const NUM_NAMES=['صفر','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر','عشرون'];
-
-/* ================= قائمة كل الأنشطة (لحساب التقدّم بدقّة) ================= */
-const ALL_ACTIVITIES=(function(){
-  const s=new Set();
-  letters.forEach(function(l){s.add('letter-'+l[0])});
-  for(let i=0;i<=20;i++) s.add('number-'+i);
-  Object.keys(info).forEach(function(k){s.add('info-'+k)});
-  ['writing-practice','arabic-words','quiz-complete','count-correct',
-   'math-add-correct','math-subtract-correct','art-colors','art-shapes',
-   'art-drawing','french-words','french-colors'].forEach(function(id){s.add(id)});
-  return s;
-})();
-const TOTAL_ACTIVITIES=ALL_ACTIVITIES.size;
-
-/* ================= أدوات مساعدة ================= */
-const panel=function(){return document.getElementById('panel')};
-function rnd(a,b){return a+Math.floor(Math.random()*(b-a+1))}
-function shuffle(arr){
-  const a=arr.slice();
-  for(let i=a.length-1;i>0;i--){const j=rnd(0,i);const t=a[i];a[i]=a[j];a[j]=t}
-  return a;
-}
-function uniqueShuffled(list){
-  const seen=new Set(),out=[];
-  list.forEach(function(v){if(!seen.has(v)){seen.add(v);out.push(v)}});
-  return shuffle(out);
-}
-
-/* ================= التخزين الآمن ================= */
-const K_POINTS='tbs_points',K_DONE='tbs_completed';
-let points=0,completed=[];
-
-function loadState(){
-  try{
-    const n=parseInt(localStorage.getItem(K_POINTS),10);
-    if(Number.isFinite(n)&&n>=0) points=n;
-  }catch(e){points=0}
-  try{
-    const raw=localStorage.getItem(K_DONE);
-    const arr=raw?JSON.parse(raw):[];
-    if(Array.isArray(arr)) completed=arr.filter(function(x){return typeof x==='string'&&ALL_ACTIVITIES.has(x)});
-  }catch(e){completed=[]}
-}
-function saveState(){
-  try{
-    localStorage.setItem(K_POINTS,String(points));
-    localStorage.setItem(K_DONE,JSON.stringify(completed));
-  }catch(e){/* التخزين غير متاح — نتابع بلا حفظ */}
-}
-
-/* ================= النطق ================= */
-let soundOn=true;
-const voiceCache={};
-function pickVoice(lang){
-  if(!('speechSynthesis' in window)) return null;
-  const key=String(lang||'ar').slice(0,2).toLowerCase();
-  if(Object.prototype.hasOwnProperty.call(voiceCache,key)) return voiceCache[key];
-  let v=null;
-  try{
-    v=speechSynthesis.getVoices().find(function(x){return x.lang&&x.lang.toLowerCase().indexOf(key)===0})||null;
-  }catch(e){v=null}
-  voiceCache[key]=v;
-  return v;
-}
-if('speechSynthesis' in window){
-  try{speechSynthesis.addEventListener('voiceschanged',function(){
-    Object.keys(voiceCache).forEach(function(k){delete voiceCache[k]});
-  })}catch(e){}
-}
-function speak(text,lang){
-  if(!soundOn||!text) return;
-  if(!('speechSynthesis' in window)) return;
-  try{
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(String(text));
-    u.lang=lang||'ar-SA';
-    const v=pickVoice(u.lang);
-    if(v) u.voice=v;
-    u.rate=0.85;u.pitch=1;
-    setTimeout(function(){ if(soundOn){ try{speechSynthesis.speak(u)}catch(e){} } },60);
-  }catch(e){}
-}
-function toggleSound(){
-  soundOn=!soundOn;
-  const b=document.getElementById('soundBtn');
-  if(b){
-    b.textContent=soundOn?'🔊 الصوت':'🔇 صامت';
-    b.setAttribute('aria-pressed',String(soundOn));
-  }
-  if(!soundOn&&'speechSynthesis' in window){try{speechSynthesis.cancel()}catch(e){}}
-  else speak('الصوت مفعّل');
-}
-
-/* ================= رسائل ================= */
-let toastTimer=null;
-function flash(msg){
-  const t=document.getElementById('toast');
-  if(!t) return;
-  t.textContent=msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(function(){t.classList.remove('show')},2400);
-}
-
-/* ================= التقدّم والمكافآت ================= */
-function updateProgress(){
-  const n=completed.length;
-  const pct=TOTAL_ACTIVITIES?Math.min(100,Math.round(n/TOTAL_ACTIVITIES*100)):0;
-  const bar=document.getElementById('progressBar');
-  const pts=document.getElementById('pointsText');
-  const txt=document.getElementById('progressText');
-  if(bar) bar.style.width=pct+'%';
-  if(pts) pts.textContent='⭐ النقاط: '+points;
-  if(txt) txt.textContent=n
-    ? 'أكملت '+n+' من '+TOTAL_ACTIVITIES+' نشاطًا ('+pct+'٪). واصل التقدّم!'
-    : 'أنجز أول نشاط لتحصل على نقاط!';
-}
-function reward(id){
-  if(!id||!ALL_ACTIVITIES.has(id)||completed.indexOf(id)!==-1) return;
-  completed.push(id);
-  points+=10;
-  saveState();
-  updateProgress();
-}
-
-/* ================= التنقّل ================= */
-function focusPanel(p){
-  if(!p) return;
-  try{p.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){p.scrollIntoView()}
-  try{p.focus({preventScroll:true})}catch(e){}
-}
-function openSubject(key){
-  const d=data[key];
-  const p=panel();
-  if(!d||!p) return;
-  p.className='panel active';
-  p.innerHTML='<h2>'+d.title+'</h2><p>'+d.intro+'</p><div class="lesson-list">'
-    +d.lessons.map(function(l,i){
-      return '<div class="lesson"><span><b>'+l[0]+'</b><br><small style="color:var(--muted)">نشاط '+(i+1)+'</small></span>'
-        +'<button type="button" onclick="openLesson(\''+key+'\','+i+')">افتح</button></div>';
-    }).join('')
-    +'</div><div class="actions"><button type="button" class="secondary" onclick="closePanel()">إغلاق</button></div>';
-  focusPanel(p);
-}
-function openLesson(key,i){
-  const lesson=data[key]&&data[key].lessons[i];
-  if(!lesson){flash('هذا الدرس غير متاح.');return}
-  const fn=handlers[lesson[1]];
-  if(typeof fn==='function') fn();
-  else flash('هذا الدرس غير متاح بعد.');
-}
-function closePanel(){
-  const p=panel();
-  if(!p) return;
-  p.className='panel';
-  p.innerHTML='';
-}
-
-/* ================= العربية ================= */
-function showLetters(){
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>حروف الهجاء</h2><p>اضغط على حرف لتراه مع كلمة تبدأ به، واستمع إلى نطقه.</p>'
-    +'<div class="letter-grid">'+letters.map(function(l,i){
-      return '<button type="button" class="letter-btn" onclick="showLetter('+i+')">'+l[0]+'</button>';
-    }).join('')+'</div>'
-    +'<div id="letterDetail" class="pill">اختر حرفًا من الشبكة.</div>'
-    +'<div class="actions"><button type="button" class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';
-  focusPanel(p);
-}
-function showLetter(i){
-  const l=letters[i];
-  const box=document.getElementById('letterDetail');
-  if(!l||!box) return;
-  box.innerHTML='<div class="bigletter">'+l[0]+'</div>'
-    +'<div style="text-align:center;font-size:24px">'+l[1]+'</div>'
-    +'<p style="text-align:center;margin:8px 0 0">حرف '+l[0]+' في كلمة '+l[1]+'</p>'
-    +'<div style="text-align:center;margin-top:10px"><button type="button" class="secondary" onclick="speakLetter('+i+')">🔊 استمع</button></div>';
-  speakLetter(i);
-  reward('letter-'+l[0]);
-}
-function speakLetter(i){
-  const l=letters[i];
-  if(l) speak(l[0]+'، '+l[1]);
-}
-
-function showWriting(){
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>أتدرّب على الكتابة ✍️</h2><p>اختر حرفًا، ثم تتبّع شكله بإصبعك في المساحة.</p>'
-    +'<div class="letter-grid">'+letters.map(function(l,i){
-      return '<button type="button" class="letter-btn" onclick="setTraceLetter('+i+')">'+l[0]+'</button>';
-    }).join('')+'</div>'
-    +'<div class="bigletter" id="traceLetter">ا</div>'
-    +'<canvas id="draw" class="trace" aria-label="مساحة التدريب على الكتابة"></canvas>'
-    +'<div class="actions"><button type="button" class="primary" onclick="clearDraw()">مسح اللوحة</button>'
-    +'<button type="button" class="secondary" onclick="reward(\'writing-practice\');flash(\'أحسنت! واصل التدريب ✨\')">أنهيت التدريب</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';
-  setupDraw(document.getElementById('draw'));
-  focusPanel(p);
-}
-function setTraceLetter(i){
-  const l=letters[i];
-  const el=document.getElementById('traceLetter');
-  if(!l||!el) return;
-  el.textContent=l[0];
-  clearDraw();
-  speak(l[0]);
-}
-
-function showWords(){
-  const words=[['باب','🚪'],['بيت','🏠'],['قلم','✏️'],['كتاب','📘'],['شمس','☀️'],['ماء','💧'],['تفاح','🍎'],['سمك','🐟']];
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>كلمات قصيرة</h2><p>اقرأ الكلمة بصوتك، ثم اضغط 🔊 لتسمعها.</p>'
-    +words.map(function(w){
-      return '<div class="lesson"><b style="font-size:22px">'+w[0]+'</b>'
-        +'<span style="font-size:28px" aria-hidden="true">'+w[1]+'</span>'
-        +'<button type="button" onclick="speak(\''+w[0]+'\')" aria-label="استمع إلى كلمة '+w[0]+'">🔊</button></div>';
-    }).join('')
-    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'arabic-words\');flash(\'أحسنت في القراءة! ⭐\')">أنهيت القراءة</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'arabic\')">عودة</button></div>';
-  focusPanel(p);
-}
-
-/* ================= الرياضيات ================= */
-function showNumbers(){
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>الأعداد من 0 إلى 20</h2><p>اضغط على عدد لقراءته والاستماع إليه.</p>'
-    +'<div class="number-grid">'+Array.from({length:21},function(_,i){
-      return '<button type="button" class="number-btn" onclick="numberDetail('+i+')" aria-label="العدد '+i+'">'+i+'</button>';
-    }).join('')+'</div>'
-    +'<div id="numberDetail" class="pill">اختر عددًا.</div>'
-    +'<div class="actions"><button type="button" class="secondary" onclick="openSubject(\'math\')">عودة</button></div>';
-  focusPanel(p);
-}
-function numberDetail(n){
-  const box=document.getElementById('numberDetail');
-  if(!box) return;
-  box.innerHTML='<div style="font-size:46px;font-weight:800;text-align:center;color:var(--purple-dark);line-height:1.2">'+n+'</div>'
-    +'<div style="text-align:center;font-size:20px">'+NUM_NAMES[n]+'</div>';
-  speak(NUM_NAMES[n]);
-  reward('number-'+n);
-}
-
-function showCount(){
-  const total=rnd(3,7);
-  const correct=total;
-  const pool=[correct-1,correct,correct+1,correct+2].filter(function(v){return v>0});
-  const opts=uniqueShuffled(pool).slice(0,3);
-  if(opts.indexOf(correct)===-1) opts[opts.length-1]=correct;
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>العدّ</h2><p>كم عدد التفاحات؟ عُدّها بإصبعك.</p>'
-    +'<div class="question" aria-label="'+total+' تفاحات">'+new Array(total+1).join('🍎 ').trim()+'</div>'
-    +'<div id="countOptions">'+opts.map(function(n){
-      return '<button type="button" class="quizopt" onclick="answerCount(this,'+n+','+correct+')">'+n+'</button>';
-    }).join('')+'</div>'
-    +'<p id="countFeedback" class="feedback" role="status"></p>'
-    +'<div class="actions"><button type="button" class="secondary" onclick="showCount()">سؤال آخر ↻</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'math\')">عودة</button></div>';
-  focusPanel(p);
-}
-function answerCount(btn,chosen,correct){
-  const wrap=document.getElementById('countOptions');
-  const f=document.getElementById('countFeedback');
-  if(!wrap||!f||wrap.dataset.done) return;
-  if(chosen===correct){
-    wrap.dataset.done='1';
-    Array.prototype.forEach.call(wrap.querySelectorAll('button'),function(b){b.disabled=true});
-    f.textContent='أحسنت! إجابة صحيحة ⭐';
-    f.className='feedback correct';
-    speak('أحسنت، العدد '+correct);
-    reward('count-correct');
-  }else{
-    btn.disabled=true;
-    f.textContent='ليست الإجابة الصحيحة، عُدّ التفاحات مرة أخرى 💡';
-    f.className='feedback wrong';
-  }
-}
-
-function showMath(kind){
-  const isAdd=kind==='add';
-  const a=isAdd?rnd(1,8):rnd(3,10);
-  const b=isAdd?rnd(1,10-a):rnd(1,a);
-  const correct=isAdd?a+b:a-b;
-  const pool=[correct+1,correct,correct-1,correct+2].filter(function(v){return v>=0});
-  const opts=uniqueShuffled(pool).slice(0,3);
-  if(opts.indexOf(correct)===-1) opts[opts.length-1]=correct;
-  const op=isAdd?'+':'−';
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>'+(isAdd?'الجمع':'الطرح')+'</h2><p>احسب باستعمال الأصابع أو الأشياء، ثم اختر الجواب.</p>'
-    +'<div class="question">'+a+' '+op+' '+b+' = ؟</div>'
-    +'<div id="mathOptions">'+opts.map(function(n){
-      return '<button type="button" class="quizopt" onclick="answerMath(this,'+n+','+correct+',\''+kind+'\')">'+n+'</button>';
-    }).join('')+'</div>'
-    +'<p id="mathFeedback" class="feedback" role="status"></p>'
-    +'<div class="actions"><button type="button" class="secondary" onclick="showMath(\''+kind+'\')">سؤال آخر ↻</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'math\')">عودة</button></div>';
-  focusPanel(p);
-}
-function answerMath(btn,chosen,correct,kind){
-  const wrap=document.getElementById('mathOptions');
-  const f=document.getElementById('mathFeedback');
-  if(!wrap||!f||wrap.dataset.done) return;
-  if(chosen===correct){
-    wrap.dataset.done='1';
-    Array.prototype.forEach.call(wrap.querySelectorAll('button'),function(b){b.disabled=true});
-    f.textContent='أحسنت! إجابة صحيحة ⭐';
-    f.className='feedback correct';
-    speak('أحسنت، الجواب '+correct);
-    reward(kind==='add'?'math-add-correct':'math-subtract-correct');
-  }else{
-    btn.disabled=true;
-    f.textContent='حاول مرة أخرى، أنت تستطيع! 💪';
-    f.className='feedback wrong';
-  }
-}
-
-/* ================= دروس معلوماتية ================= */
-function showInfo(k){
-  const d=info[k];
-  const p=panel();
-  if(!d||!p) return;
-  p.className='panel active';
-  p.innerHTML='<h2>'+d[0]+'</h2>'
-    +'<div class="art-shapes" aria-hidden="true">'+d[1]+'</div>'
-    +'<div class="pill">'+d[2]+'</div>'
-    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'info-'+k+'\');speakInfo(\''+k+'\');flash(\'رائع! تعلّمت معلومة جديدة ⭐\')">أنهيت الدرس</button>'
-    +'<button type="button" class="secondary" onclick="speakInfo(\''+k+'\')">🔊 استمع</button>'
-    +'<button type="button" class="secondary" onclick="backInfo(\''+k+'\')">عودة</button></div>';
-  focusPanel(p);
-}
-function speakInfo(k){
-  const d=info[k];
-  if(d) speak(d[0]+'. '+d[2]);
-}
-function backInfo(k){
-  openSubject(['body','animals','plants','hygiene'].indexOf(k)!==-1?'science'
-    :['honesty','cleanliness','parents','greeting'].indexOf(k)!==-1?'islamic':'civic');
-}
-
-/* ================= التربية الفنية ================= */
-function showColors(){
-  const items=[['أحمر','التفاحة','🔴'],['أزرق','السماء','🔵'],['أصفر','الشمس','🟡'],['أخضر','العشب','🟢']];
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>الألوان</h2><p>تعرّف إلى الألوان الأساسية واضغط 🔊 للاستماع.</p>'
-    +items.map(function(x){
-      return '<div class="lesson"><b>'+x[0]+' <span aria-hidden="true">'+x[2]+'</span></b>'
-        +'<span style="color:var(--muted)">مثل '+x[1]+'</span>'
-        +'<button type="button" onclick="speak(\''+x[0]+'، مثل '+x[1]+'\')" aria-label="استمع إلى '+x[0]+'">🔊</button></div>';
-    }).join('')
-    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'art-colors\');flash(\'أحسنت يا فنان! 🎨\')">أنهيت الدرس</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';
-  focusPanel(p);
-}
-function showShapes(){
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>الأشكال</h2>'
-    +'<div class="art-shapes" aria-hidden="true">🔴 دائرة　🟥 مربع　🔺 مثلث　▭ مستطيل</div>'
-    +'<div class="pill">ابحث حولك عن أشياء تشبه هذه الأشكال.</div>'
-    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'art-shapes\');flash(\'رائع! 👏\')">أنهيت الدرس</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';
-  focusPanel(p);
-}
-function showDrawing(){
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>ارسم بإصبعك 🎨</h2><p>ارسم شكلًا أو خطًا في المساحة.</p>'
-    +'<canvas id="draw" class="trace" aria-label="مساحة الرسم"></canvas>'
-    +'<div class="actions"><button type="button" class="primary" onclick="clearDraw()">مسح</button>'
-    +'<button type="button" class="secondary" onclick="reward(\'art-drawing\');flash(\'عمل فني رائع! ⭐\')">أنهيت الرسم</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'art\')">عودة</button></div>';
-  setupDraw(document.getElementById('draw'));
-  focusPanel(p);
-}
-
-/* ================= الفرنسية ================= */
-function showFrenchLetters(){
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>Les lettres</h2><p>اضغط على حرف لسماع نطقه بالفرنسية.</p>'
-    +'<div class="letter-grid">'+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function(x){
-      return '<button type="button" class="letter-btn" onclick="speak(\''+x+'\',\'fr-FR\')">'+x+'</button>';
-    }).join('')+'</div>'
-    +'<div class="actions"><button type="button" class="secondary" onclick="openSubject(\'french\')">Retour</button></div>';
-  focusPanel(p);
-}
-function showFrenchWords(){
-  const words=[['Bonjour','مرحبًا'],['Merci','شكرًا'],['Papa','أبي'],['Maman','أمي'],['Livre','كتاب'],['École','مدرسة']];
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>Quelques mots</h2>'
-    +words.map(function(x){
-      return '<div class="lesson"><b>'+x[0]+'</b><span style="color:var(--muted)">'+x[1]+'</span>'
-        +'<button type="button" onclick="speak(\''+x[0]+'\',\'fr-FR\')" aria-label="استمع إلى '+x[0]+'">🔊</button></div>';
-    }).join('')
-    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'french-words\');flash(\'Très bien! ⭐\')">Terminé</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'french\')">Retour</button></div>';
-  focusPanel(p);
-}
-function showFrenchColors(){
-  const items=[['Rouge','أحمر','🔴'],['Bleu','أزرق','🔵'],['Jaune','أصفر','🟡'],['Vert','أخضر','🟢']];
-  const p=panel();
-  p.className='panel active';
-  p.innerHTML='<h2>Les couleurs</h2>'
-    +items.map(function(x){
-      return '<div class="lesson"><b>'+x[0]+'</b>'
-        +'<span style="color:var(--muted)">'+x[1]+' <span aria-hidden="true">'+x[2]+'</span></span>'
-        +'<button type="button" onclick="speak(\''+x[0]+'\',\'fr-FR\')" aria-label="استمع إلى '+x[0]+'">🔊</button></div>';
-    }).join('')
-    +'<div class="actions"><button type="button" class="primary" onclick="reward(\'french-colors\');flash(\'Très bien! ⭐\')">Terminé</button>'
-    +'<button type="button" class="secondary" onclick="openSubject(\'french\')">Retour</button></div>';
-  focusPanel(p);
-}
-
-/* ================= الاختبار ================= */
-let qi=0,score=0;
-function showQuiz(){qi=0;score=0;renderQuiz()}
-function renderQuiz(){
-  const p=panel();
-  if(!p) return;
-  p.className='panel active';
-  if(qi>=questions.length){
-    p.innerHTML='<h2>انتهى الاختبار! 🏆</h2>'
-      +'<div class="question">نتيجتك: '+score+' من '+questions.length+'</div>'
-      +'<p class="feedback">'+(score>=3?'أحسنت! واصل التعلّم. ⭐':'عمل جيد! حاول مرة أخرى. 💪')+'</p>'
-      +'<div class="actions"><button type="button" class="primary" onclick="showQuiz()">أعد الاختبار</button>'
-      +'<button type="button" class="secondary" onclick="closePanel()">إغلاق</button></div>';
-    reward('quiz-complete');
-    focusPanel(p);
-    return;
-  }
-  const q=questions[qi];
-  p.innerHTML='<h2>اختبر نفسك ✨ ('+(qi+1)+'/'+questions.length+')</h2>'
-    +'<div class="question">'+q.q+'</div>'
-    +'<div id="quizOptions">'+q.opts.map(function(o,i){
-      return '<button type="button" class="quizopt" onclick="quizAnswer(this,'+i+')">'+o+'</button>';
-    }).join('')+'</div>'
-    +'<p id="quizFeedback" class="feedback" role="status"></p>'
-    +'<div id="quizNext"></div>';
-  focusPanel(p);
-}
-function quizAnswer(btn,i){
-  const q=questions[qi];
-  const wrap=document.getElementById('quizOptions');
-  const f=document.getElementById('quizFeedback');
-  if(!q||!wrap||!f||wrap.dataset.done) return;
-  wrap.dataset.done='1';
-  Array.prototype.forEach.call(wrap.querySelectorAll('button'),function(b){b.disabled=true});
-  if(i===q.a){
-    score++;
-    f.textContent='إجابة صحيحة! ⭐';
-    f.className='feedback correct';
-    speak('إجابة صحيحة');
-  }else{
-    btn.className+=' wrong-pick';
-    f.textContent='الإجابة الصحيحة: '+q.opts[q.a];
-    f.className='feedback wrong';
-  }
-  const n=document.createElement('button');
-  n.type='button';
-  n.className='primary';
-  n.textContent=qi===questions.length-1?'عرض النتيجة':'السؤال التالي ←';
-  n.onclick=function(){qi++;renderQuiz()};
-  const box=document.getElementById('quizNext');
-  if(box) box.appendChild(n);
-}
-
-/* ================= الإنجازات ================= */
-function showProgress(){
-  const p=panel();
-  if(!p) return;
-  const pct=TOTAL_ACTIVITIES?Math.round(completed.length/TOTAL_ACTIVITIES*100):0;
-  p.className='panel active';
-  p.innerHTML='<h2>إنجازاتي 🏆</h2>'
-    +'<div class="question">⭐ '+points+' نقطة</div>'
-    +'<div class="pill">عدد الأنشطة المنجزة: <b>'+completed.length+'</b> من '+TOTAL_ACTIVITIES+' ('+pct+'٪)</div>'
-    +'<p style="color:var(--muted);font-size:13px;line-height:1.9;margin:0">كل نشاط جديد يمنحك 10 نقاط مرة واحدة فقط.</p>'
-    +'<div class="actions"><button type="button" class="secondary" onclick="closePanel()">إغلاق</button>'
-    +'<button type="button" class="danger" onclick="resetProgress()">تصفير التقدّم 🗑️</button></div>';
-  focusPanel(p);
-}
-function resetProgress(){
-  if(!window.confirm('هل تريد مسح كل التقدّم والنقاط والبدء من جديد؟')) return;
-  points=0;completed=[];
-  saveState();updateProgress();closePanel();
-  flash('تم البدء من جديد ✨');
-}
-
-/* ================= لوحة الرسم (Canvas) ================= */
-function setupDraw(canvas){
-  if(!canvas) return;
-  const ctx=canvas.getContext('2d');
-  if(!ctx) return;
-  const dpr=Math.min(window.devicePixelRatio||1,2);
-
-  function resize(){
-    const r=canvas.getBoundingClientRect();
-    const w=Math.max(1,Math.round(r.width||600));
-    const h=Math.max(1,Math.round(r.height||190));
-    canvas.width=Math.round(w*dpr);
-    canvas.height=Math.round(h*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    ctx.lineWidth=5;
-    ctx.lineCap='round';
-    ctx.lineJoin='round';
-    ctx.strokeStyle='#5b52cc';
-  }
-  resize();
-
-  let drawing=false;
-  function pos(e){
-    const r=canvas.getBoundingClientRect();
-    return {x:e.clientX-r.left,y:e.clientY-r.top};
-  }
-  canvas.addEventListener('pointerdown',function(e){
-    drawing=true;
-    try{canvas.setPointerCapture(e.pointerId)}catch(_){}
-    const q=pos(e);
-    ctx.beginPath();
-    ctx.moveTo(q.x,q.y);
-    e.preventDefault();
-  });
-  canvas.addEventListener('pointermove',function(e){
-    if(!drawing) return;
-    const q=pos(e);
-    ctx.lineTo(q.x,q.y);
-    ctx.stroke();
-    e.preventDefault();
-  });
-  function end(){drawing=false}
-  canvas.addEventListener('pointerup',end);
-  canvas.addEventListener('pointercancel',end);
-  canvas.addEventListener('pointerleave',end);
-
-  canvas._ctx=ctx;
-  canvas._dpr=dpr;
-}
-function clearDraw(){
-  const c=document.getElementById('draw');
-  if(!c) return;
-  const ctx=c._ctx||c.getContext('2d');
-  if(!ctx) return;
-  ctx.save();
-  ctx.setTransform(1,0,0,1,0,0);
-  ctx.clearRect(0,0,c.width,c.height);
-  ctx.restore();
-}
-
-/* ================= الموجّه ================= */
-const handlers={
-  letters:showLetters,
-  writing:showWriting,
-  words:showWords,
-  arabicquiz:showQuiz,
-  numbers:showNumbers,
-  count:showCount,
-  add:function(){showMath('add')},
-  subtract:function(){showMath('subtract')},
-  colors:showColors,
-  shapes:showShapes,
-  drawing:showDrawing,
-  frenchletters:showFrenchLetters,
-  frenchwords:showFrenchWords,
-  frenchcolors:showFrenchColors
-};
-Object.keys(info).forEach(function(k){
-  handlers[k]=function(){showInfo(k)};
-});
-
-/* ================= التشغيل ================= */
-loadState();
-updateProgress();
+const FAV_KEY="tallam_bisuhula_favorites_v1";
+function getFavorites(){try{return JSON.parse(localStorage.getItem(FAV_KEY)||"[]")}catch(e){return []}}
+function isFavorite(i){return getFavorites().includes(i)}
+function toggleFavorite(i){let a=getFavorites();a=a.includes(i)?a.filter(x=>x!==i):[...a,i];localStorage.setItem(FAV_KEY,JSON.stringify(a));render();}
+let installPrompt=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;$("installBtn").classList.add("primary");});
+$("installBtn").addEventListener("click",async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;}else{alert("للتثبيت: افتح الموقع المنشور عبر HTTPS في Chrome، ثم اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق». عند فتح الملف مباشرة قد لا يظهر خيار التثبيت.");}});
+if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}
+render();
 </script>
 </body>
 </html>
